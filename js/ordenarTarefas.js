@@ -27,7 +27,6 @@ function ordenar(valor, adicionandoTarefa){
         tarefasCadast = 0;
         oldValueOrdenar = valor;
         
-        console.log(valor.toLowerCase());
         switch(valor.toLowerCase()){
             case "nome":
                 ordenarPorNome();
@@ -44,18 +43,21 @@ function ordenar(valor, adicionandoTarefa){
 
 function ordenarPorNome(){
     var nomes = [];
+    var divTarefasAux = divTarefas.slice();
     for (var i = 0; i < tarefas.length; i++) nomes.push(tarefas[i].nome);
     nomes = nomes.sort();
     
     for (var i = 0; i < tarefas.length; i++){
         for (var j = 0; j < tarefas.length; j++){
-            var nomeDiv = divTarefas[j].querySelector(".nome-tarefa").textContent;
-            console.log(nomes[i]);
-            console.log(nomeDiv);
-            if(nomes[i] == nomeDiv){
-                containerLista.appendChild(divTarefas[j]);
-                tarefasCadast++;
-                break;
+            if(typeof divTarefasAux[j] != 'undefined'){
+                var nomeDiv = divTarefasAux[j].querySelector(".nome-tarefa").textContent;
+                if(nomes[i] == nomeDiv){
+                    containerLista.appendChild(divTarefasAux[j]);
+                    delete divTarefasAux[j];
+
+                    tarefasCadast++;
+                    break;
+                }
             }
         }
     }
@@ -63,12 +65,11 @@ function ordenarPorNome(){
 
 function ordenarPorPrazo(){
     var datas = [];
+    var divTarefasAux = divTarefas.slice();
     for (var i = 0; i < tarefas.length; i++){
         var data = new Date(tarefas[i].prazo);
         datas.push(data);
     }
-    
-    console.log(datas);
     
     for(var i = 0; i < datas.length-1; i++){
         for (var j = 0; j <= datas.length; j++){
@@ -80,18 +81,17 @@ function ordenarPorPrazo(){
         }
     }
     
-    console.log(datas);
-    
     for (var i = 0; i < tarefas.length; i++){
         for (var j = 0; j < tarefas.length; j++){
-            var dataDiv = new Date(getPrazoInvertido(divTarefas[j].querySelector(".prazo-tarefa").textContent));
-            console.log("Data " + i);
-            console.log(datas[i]);
-            console.log(dataDiv);
-            if(datas[i].getTime() == dataDiv.getTime()){
-                containerLista.appendChild(divTarefas[j]);
-                tarefasCadast++;
-                break;
+            if(typeof divTarefasAux[j] != 'undefined'){
+                var dataDiv = new Date(getPrazoInvertido(divTarefas[j].querySelector(".prazo-tarefa").textContent));
+                if(datas[i].getTime() == dataDiv.getTime()){
+                    containerLista.appendChild(divTarefas[j]);
+                    delete divTarefasAux[j];
+                    
+                    tarefasCadast++;
+                    break;
+                }
             }
         }
     }
@@ -99,18 +99,22 @@ function ordenarPorPrazo(){
 
 function ordenarPorDesc(){
     var descricoes = [];
+    var divTarefasAux = divTarefas.slice();
+    
     for (var i = 0; i < tarefas.length; i++) descricoes.push(tarefas[i].descricao);
     descricoes = descricoes.sort();
     
     for (var i = 0; i < tarefas.length; i++){
         for (var j = 0; j < tarefas.length; j++){
-            var descDiv = divTarefas[j].querySelector(".descricao-tarefa").textContent;
-            console.log(descDiv);
-            console.log(descricoes[i]);
-            if(descricoes[i] == descDiv){
-                containerLista.appendChild(divTarefas[j]);
-                tarefasCadast++;
-                break;
+            if(typeof divTarefasAux[j] != 'undefined'){
+                var descDiv = divTarefas[j].querySelector(".descricao-tarefa").textContent;
+                if(descricoes[i] == descDiv){
+                    containerLista.appendChild(divTarefas[j]);
+                    delete divTarefasAux[j];
+                    
+                    tarefasCadast++;
+                    break;
+                }
             }
         }
     }
