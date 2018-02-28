@@ -1,0 +1,79 @@
+<!DOCKTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="index.css">
+    <title>To Do list</title>
+  </head>
+
+  <body>
+    <section class="cabecalho">
+      <div class="titulo">
+        <p>TO DO LIST</p>
+      </div>
+
+      <div class="menu">
+        <label for="adicionar">Adicionar tarefa</label>
+        <button id="adicionar">+</button>
+
+        <label for="remover">Remover tafera</label>
+        <button id="remover">-</button>
+
+        <label for="organizador">Organizar por</label>
+        <select id="organizador">
+          <option value="nome">Nome</option>
+          <option value="prazo">Prazo</option>
+          <option value="dataCriacao" selected>Data de criação</option>
+        </select>
+      </div>
+    </section>
+
+    <!--Essa sessão não está sendo exibida por padrão-->
+      <section class="addTarefa">
+        <h2>Adicionar nova tarefa</h2>
+        <form id="tarefa-form">
+            <div class="inputNome">
+              <label for="nome">Nome:</label>
+              <input id="nome" name="nomeTarefa" type="text" placeholder="Nome da tarefa" class="inputNome">
+            </div>
+
+            <div class="inputPrazo">
+              <label for="prazo">Prazo</label>
+              <input id="prazo" class="inputPrazo" type="date" name="prazo">
+            </div>
+
+            <div class="inputDescricao">
+              <label for="descricao">Descrição:</label>
+              <input id="descricao" name="descricao" type="text" placeholder=
+      "Detalhe sua tarefa" class="inputDescricao">
+            </div>
+        </form>
+        <button id="salvar">Salvar</button>
+        <button id="cancelar">Cancelar</button>
+      </section>
+
+    <main>
+      <section class="lista">
+        <div class="tarefa" id="tarefa">
+          <div id="nome">
+            <label for="texto">Tarefa</label>
+            <p id="texto">Nome aqui</p>
+          </div>
+
+          <div id="prazo">
+            <label for="prazo-texto">Prazo</label>
+            <p id="texto">Prazo aqui</p>
+          </div>
+
+          <div id="descricao">
+            <label for="descricao-texto">Descrição</label>
+            <p id="texto">Descrição da tarefa aqui</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="adicionarTarefa.js"></script>
+    <script src="removerTarefa.js"></script>
+  </body>
+</html>

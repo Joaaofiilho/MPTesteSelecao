@@ -1,0 +1,117 @@
+main{
+    display: inherit;
+}
+
+body{
+    width: 90%;
+    position: absolute;
+    left: 50px;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.titulo{
+  background-color: #000;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 23px;
+  font-weight: bold;
+  font-family: "Verdana", sans-serif;
+  color: #fff;
+}
+
+.menu{
+  background-color: #c9c9c9;
+  position: sticky;
+  top: 0px;
+}
+
+.menu #adicionar{
+  width: 50px;
+  height: 50px;
+}
+
+.menu #remover{
+  width: 50px;
+  height: 50px;
+}
+
+.menu label{
+  font-size: 14px;
+}
+
+.tarefa{
+  width: auto;
+  height: 200px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  padding: 8px 5px 8px 5px;
+  margin-bottom: 15px;
+
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 40% 60%;
+
+  text-align: center;
+  display: none;
+}
+
+.lista .tarefa #nome{
+  grid-row: 1;
+  grid-column: 1;
+  background-color: #af1ab2;
+}
+
+.lista .tarefa #prazo{
+  grid-row: 1;
+  grid-column: 2;
+  background-color: #283456;
+}
+
+.lista .tarefa #descricao{
+  grid-row: 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: #19a8c4;
+}
+
+label {
+  text-transform: uppercase;
+  font: small-caps bold 12px sans-serif;
+}
+
+.lista .tarefa label{
+  font-size: 13px;
+}
+
+.addTarefa{
+  padding: 10px 5px 10px 5px;
+  margin: 15px 5px 15px 5px;
+  width: 700px;
+  background-color: #67db6c;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.17);
+  display: none;
+}
+
+.addTarefa .form{
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 40% 60%;
+}
+
+.addTarefa h2{
+  text-align: center;
+  text-transform: uppercase;
+  font: small-caps bold 16px sans-serif;
+  margin-bottom: 5px;
+}
+
+.clicado{
+    background-color: black;
+    background-blend-mode: luminosity;
+}
+
+.exibir{
+    display: grid;
+}
