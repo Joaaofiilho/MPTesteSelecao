@@ -11,5 +11,7 @@ botaoRemover.addEventListener('click', function(event) {
         tarefas.splice(tarefas.length-1, tarefas.length);
         tarefaRemover.remove();
         tarefasCadast--;
+    }else{
+        exibirErro("Não há tarefas para serem removidas!");
     }
 });

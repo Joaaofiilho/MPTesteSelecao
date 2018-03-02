@@ -9,6 +9,8 @@ var prazo = formulario.querySelector(".prazo");
 var inputPrazo = prazo.querySelector(".inputPrazo");
 var descricao = formulario.querySelector(".descricao");
 var inputDescricao = descricao.querySelector(".inputDescricao");
+var cor = formulario.querySelector(".cor");
+var inputCor = cor.querySelector(".inputCor");
 var botaoSalvar = adicionarTarefa.querySelector(".salvar");
 var botaoCancelar = adicionarTarefa.querySelector(".cancelar");
 
@@ -21,10 +23,11 @@ var divTarefas = [];
 function criarTarefa(form) {
   //As condiçoes do formulario completo ja devem ter sido avaliadas
   var tarefa = {
-    nome: form.nome.value,
+    nome: form.nome.value.trim(),
     prazo: form.prazo.value,
     numero: tarefasCadast,
-    descricao: form.descricao.value
+    descricao: form.descricao.value.trim(),
+    cor: form.cor.value
   };
   tarefas.push(tarefa);
   montarTarefa();
@@ -33,7 +36,12 @@ function criarTarefa(form) {
 function montarTarefa(form){
     var divTarefa = document.createElement("div");
     divTarefa.classList.add("tarefa");
-
+    
+    var divCorpo = document.createElement("div");
+    divCorpo.classList.add("corpo-tarefa");
+    
+    divTarefa.appendChild(divCorpo);
+    
     var divNome = document.createElement("div");
     divNome.classList.add("nome");
 
@@ -46,7 +54,7 @@ function montarTarefa(form){
     p1.innerHTML = tarefas[tarefas.length-1].nome;
     divNome.appendChild(p1);
 
-    divTarefa.appendChild(divNome);
+    divCorpo.appendChild(divNome);
 
     var divPrazo = document.createElement("div");
     divPrazo.classList.add("prazo");
@@ -60,7 +68,7 @@ function montarTarefa(form){
     p2.innerHTML = getPrazo(tarefas[tarefas.length - 1].prazo);
     divPrazo.appendChild(p2);
 
-    divTarefa.appendChild(divPrazo);
+    divCorpo.appendChild(divPrazo);
 
     var divDescricao = document.createElement("div");
     divDescricao.classList.add("descricao");
@@ -73,10 +81,17 @@ function montarTarefa(form){
     p3.classList.add("descricao-tarefa");
     p3.innerHTML = tarefas[tarefas.length - 1].descricao;
     divDescricao.appendChild(p3);
-
-    divTarefa.appendChild(divDescricao);
-
-    divTarefa.classList.add("exibir");
+    
+    divCorpo.appendChild(divDescricao);
+    
+    //Criar uma div pra propriedades da tarefa
+    var divProp = document.createElement("div");
+    divProp.classList.add("prop-tarefa");
+    
+    divTarefa.appendChild(divProp);
+    
+    divTarefa.classList.add(getCor(tarefas[tarefas.length-1].cor));
+    
     divTarefas.push(divTarefa);
     
     containerLista.appendChild(divTarefa);
@@ -85,40 +100,32 @@ function montarTarefa(form){
 }
 
 function exibirFormulario() {
-    var classes = adicionarTarefa.classList;
-    var isVisivel = false;
-    
-    for (var i = 0; i < classes.length; i++){
-        if(classes[i] == "exibir"){
-            classes.remove("exibir");
-            classes.add("ocultar");
-            isVisivel = true;
-        }
-    }
-    if(!isVisivel){
-        classes.remove("ocultar");
-        classes.add("exibir");
-    }
+    if(adicionarTarefa.classList.contains("ocultar")){
+        adicionarTarefa.classList.remove("ocultar");
+    }else adicionarTarefa.classList.add("ocultar");
 }
 
 botaoAdicionar.addEventListener('click', function(event){
+    colorir(inputCor);
     exibirFormulario();
 });
 
 botaoSalvar.addEventListener('click', function(event){
   if(isFormValido(formulario)){
       criarTarefa(formulario);
-      adicionarTarefa.classList.remove("exibir");
       adicionarTarefa.classList.add("ocultar");
       formulario.reset();
   }
 });
 
 botaoCancelar.addEventListener('click', function(event){
-    adicionarTarefa.classList.remove("exibir");
     adicionarTarefa.classList.add("ocultar");
     formulario.reset();
     limparErrosForm();
+});
+
+inputCor.addEventListener('click', function(event){
+    colorir(inputCor);
 });
 
 //Certificar formulario
@@ -145,7 +152,10 @@ function isFormValido(form){
     
     
     if(valido) return true;
-    return false;
+    else{
+        exibirErro("Por favor, verifique os campos destacados e tente novamente.");
+        return false;
+    }
 }
 
 function limparErrosForm(){
@@ -162,4 +172,24 @@ function getPrazo(dataInvertida){
 function getPrazoInvertido(dataNormal){
     var data = dataNormal.split("/");
     return data[2] + "-" + data[1] + "-" + data[0];
+}
+
+function getCor(nome){
+    switch(nome.toLowerCase()){
+        case "vermelho":
+            return "background-vermelho";
+            break;
+        case "amarelo":
+            return "background-amarelo";
+            break;
+        case "verde":
+            return "background-verde";
+            break;
+        case "azul":
+            return "background-azul";
+            break;
+        case "rosa":
+            return "background-rosa";
+            break;
+    }
 }

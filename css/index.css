@@ -1,11 +1,15 @@
 /*O corpo inteiro da pagina*/
 body{
-    width: 90%;
+    width: 1020px;
+    height: auto;
     position: absolute;
-    left: 50px;
+    left: 50%;
+    top:50%;
+    margin-left: -510px;
+    margin-top: -288px;
     box-sizing: border-box;
     background-color: #fff;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.09), 0 5px 10px 0 rgba(0, 0, 0, 0.15);
 }
 
 /*O cabeçalho da pagina*/
@@ -16,13 +20,12 @@ body{
   font-size: 23px;
   font-weight: bold;
   font-family: "Verdana", sans-serif;
-  color: #fff;
+  color: rgba(252, 252, 252, 1);
+    letter-spacing: 3px;
 }
 
 .menu{
-  background-color: #c9c9c9;
-  position: sticky;
-  top: 0px;
+  background-color: rgba(110, 126, 133, 1);
 }
 
 .menu .adicionar{
@@ -39,8 +42,26 @@ body{
   font-size: 14px;
 }
 
+.notification-bar{
+    position: inherit;
+    width: inherit;
+    height: 45px;
+    background-color: rgba(247, 86, 124, 1);
+}
 
-/*A área de tarefas da página*/
+.notification-bar .close-button{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    left: 97%;
+    top: 50%;
+    background: none;
+    border: none;
+    font-family: cursive;
+    color: rgba(238, 240, 242, 1);
+}
+
+/*Recursos gerais da página*/
 main{
     display: inherit;
 }
@@ -60,40 +81,119 @@ button[disabled]{
   color: #666666;
 }
 
-.lista .tarefa{
-  width: auto;
-  height: 200px;
-  background-color: #fff;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-  padding: 8px 5px 8px 5px;
-  margin-bottom: 15px;
-  grid-template-columns: 80% 20%;
-  grid-template-rows: 40% 60%;
+/*Adicionar tarefa*/
+.addTarefa{
+    width: 700px;
+    height: 190px;
+    position: relative;
+    left: 50%;
+  padding: 20px 10px 20px 10px;
+  margin: 15px 5px 15px -350px;
+  background-color: rgba(36, 123, 160, 1);
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.17);
+}
 
+.addTarefa .titulo-addTarefa{
+  text-align: center;
+  text-transform: uppercase;
+  font: small-caps bold 16px sans-serif;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.addTarefa .tarefa-form .nome{
+    display: inline-block;
+}
+
+.addTarefa .tarefa-form .nome .inputNome{
+    width: 440px;
+    height: 30px;
+}
+
+.addTarefa .tarefa-form .prazo{
+    display: inline-block;
+}
+
+.addTarefa .tarefa-form .prazo .inputPrazo{
+    width: 150px;
+    height: 30px;
+}
+
+.addTarefa .tarefa-form .descricao{
+    display: inline-block;
+    margin: 10px 5px 0px 5px;
+}
+
+.addTarefa .tarefa-form .descricao .descricao-titulo{
+
+}
+
+.addTarefa .tarefa-form .descricao .inputDescricao{
+    width: 550px;
+    height: 100px;
+    position: relative;
+}
+
+.addTarefa .tarefa-form .cor{
+    display: inline-block;
+    width: auto;
+}
+
+.addTarefa .tarefa-form .cor .cor-titulo{
+
+}
+
+/*A área de tarefas da página*/
+.lista{
+    padding: 0px 10px 0px 10px;
+}
+
+.lista .tarefa{
+  display: inline-block;
+  width: 450px;
+  height: 200px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05), 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+  padding: 8px 5px 8px 5px;
+  margin: 20px;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 40% 40% 20%;
   text-align: center;
 }
 
-.lista #tarefa{
-    display: none;
+.lista .tarefa .corpo-tarefa{
+    display: grid;
+    height: inherit;
 }
 
-.lista .tarefa .nome{
-  grid-row: 1;
-  grid-column: 1;
-  background-color: #af1ab2;
+.lista .tarefa .corpo-tarefa .nome{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
 }
 
-.lista .tarefa .prazo{
-  grid-row: 1;
-  grid-column: 2;
-  background-color: #283456;
+.lista .tarefa .corpo-tarefa .prazo{
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 3;
+    grid-column-end: 4;
 }
 
-.lista .tarefa .descricao{
-  grid-row: 2;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  background-color: #19a8c4;
+.lista .tarefa .corpo-tarefa .descricao{
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    margin: 5px;
+}
+
+.lista .tarefa .prop-tarefa{
+    display: grid;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background-color: #19a8c4;
 }
 
 label {
@@ -105,41 +205,40 @@ label {
   font-size: 13px;
 }
 
-.addTarefa{
-  padding: 10px 5px 10px 5px;
-  margin: 15px 5px 15px 5px;
-  width: 700px;
-  background-color: #67db6c;
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.17);
-  display: none;
+.lista .tarefa .prop-tarefa{
+    background-color: #c9c9c9;
 }
 
-.addTarefa .form{
-  display: grid;
-  grid-template-columns: 80% 20%;
-  grid-template-rows: 40% 60%;
-}
-
-.addTarefa h2{
-  text-align: center;
-  text-transform: uppercase;
-  font: small-caps bold 16px sans-serif;
-  margin-bottom: 5px;
-}
-
+/*Eventos especiais da página*/
 .clicado{
     background-color: black;
     background-blend-mode: luminosity;
 }
 
 .ocultar{
-    display: none;
-}
-
-.exibir{
-    display: grid;
+    display: none !important;
 }
 
 .erro{
-    background-color: #f08080;
+    background-color: rgba(247, 86, 124, 1);
+}
+
+.background-vermelho{
+    background-color: rgb(219, 63, 52);
+}
+
+.background-amarelo{
+    background-color: rgb(237, 242, 84)
+}
+
+.background-verde{
+    background-color: rgb(97, 232, 115)
+}
+
+.background-azul{
+    background-color: rgb(30, 99, 237)
+}
+
+.background-rosa{
+    background-color: rgb(239, 112, 171)
 }
