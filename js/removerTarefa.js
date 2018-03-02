@@ -1,5 +1,4 @@
-var botoesRemover = [];
-
+/*
 function removerTarefa(numeroTarefa) {
     var divTarefasAux = containerLista.getElementsByClassName("tarefa");
     divTarefasAux[getTarefa(numeroTarefa)].remove();
@@ -14,6 +13,7 @@ function getTarefa(numero){
     console.log("Oops!");
     return null;    
 }
+*/
 
 
  //for(var i=0; i< botoesRemover.length; i++) {

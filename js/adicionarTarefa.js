@@ -14,7 +14,8 @@ var inputCor = cor.querySelector(".inputCor");
 var botaoSalvar = adicionarTarefa.querySelector(".salvar");
 var botaoCancelar = adicionarTarefa.querySelector(".cancelar");
 
-var containerLista = document.querySelector(".lista");
+var main = document.querySelector("main");
+var containerLista = main.querySelector(".lista");
 
 var tarefasCadast = 0;
 var tarefas = [];
@@ -39,8 +40,6 @@ function montarTarefa(form){
     
     var divCorpo = document.createElement("div");
     divCorpo.classList.add("corpo-tarefa");
-    
-    divTarefa.appendChild(divCorpo);
     
     var divNome = document.createElement("div");
     divNome.classList.add("nome");
@@ -83,7 +82,9 @@ function montarTarefa(form){
     divDescricao.appendChild(p3);
     
     divCorpo.appendChild(divDescricao);
-	
+    
+	divTarefa.appendChild(divCorpo);
+    console.log(divTarefa);
     divTarefa.classList.add(getCor(tarefas[tarefas.length-1].cor));
     
     divTarefas.push(divTarefa);

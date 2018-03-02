@@ -1,9 +1,9 @@
 /*O corpo inteiro da pagina*/
 body{
+    position: absolute;
     display: block;
     width: 1020px;
     height: auto;
-    position: absolute;
     left: 50%;
     top:50%;
     margin-left: -510px;
@@ -87,7 +87,6 @@ button[disabled]{
   padding-left: 20px;
   padding-top: 15px;
   position: relative;
-  border-bottom: 1.5px dotted #000;
 }
 
 .menu div{
@@ -257,6 +256,7 @@ button[disabled]{
 
 /*A área de tarefas da página*/
 .lista{
+    display: inline-block;
     position: relative;
     padding: 0px 10px 0px 10px;
     height: auto;
