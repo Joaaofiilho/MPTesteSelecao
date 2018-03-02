@@ -14,14 +14,13 @@
       </div>
 
       <div class="menu">
-        <label for="adicionar" class="labelTitulo">Adicionar tarefa</label>
-        <button id="adicionar" class="adicionar">+</button>
+        <button class="adicionar">ADICIONAR TAREFA</button>
 
-        <label for="remover" class="labelTitulo">Remover tafera</label>
-        <button id="remover" class="remover">-</button>
+        <label class="labelTitulo">Remover tafera</label>
+        <button class="remover">-</button>
 
-        <label for="ordenar" class="labelTitulo">Ordenar por</label>
-        <select id="ordenar" class="ordenar">
+        <label class="labelTitulo">Ordenar por</label>
+        <select class="ordenar">
           <option value="nome" selected>Nome</option>
           <option value="prazo">Prazo</option>
           <option value="data">Data</option>
@@ -49,7 +48,7 @@
         <form class="tarefa-form">
             <div class="nome">
               <label for="nome">Nome</label>
-              <input id="nome" name="nome" type="text" placeholder="Nome da tarefa" class="inputNome">
+              <input id="nome" name="nome" type="text" placeholder="Nome da tarefa" class="inputNome" maxlength="50">
             </div>
 
             <div class="prazo">
@@ -60,7 +59,7 @@
             <div class="descricao">
               <label for="descricao" class="descricao-titulo">Descrição</label>
               <input id="descricao" name="descricao" type="text" placeholder=
-                "Detalhe sua tarefa" class="inputDescricao">
+                "Detalhe sua tarefa" class="inputDescricao" maxlength="150">
             </div>
             
             <div class="cor">

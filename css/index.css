@@ -26,11 +26,14 @@ body{
 
 .menu{
   background-color: rgba(110, 126, 133, 1);
+  height: 60px;
+  padding-left: 20px;
 }
 
 .menu .adicionar{
-  width: 50px;
-  height: 50px;
+  width: auto;
+  height: 40px;
+  background-color: rgba(36, 123, 160, 1);
 }
 
 .menu .remover{
@@ -51,23 +54,47 @@ body{
 
 .notification-bar .close-button{
     position: relative;
-    width: 25px;
-    height: 25px;
     left: 97%;
     top: 50%;
-    background: none;
+	margin-top: -7.5px;
     border: none;
-    font-family: cursive;
-    color: rgba(238, 240, 242, 1);
+    box-shadow: none;
 }
 
+.notification-bar .close-button:hover{
+    color: #c1c1c1;
+}
+
+.notification-bar .close-button:active{
+    box-shadow: none;
+	transform: none;
+}
+
+
 /*Recursos gerais da página*/
+input{
+	border-radius: 10px;
+}
+
 main{
     display: inherit;
 }
 
 button{
-    
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px #999;
+}
+
+button:active{
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
 }
 
 button:hover{
@@ -79,6 +106,16 @@ button[disabled]{
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
+  cursor: not-allowed;
+}
+
+.close-button{
+	width: 25px;
+    height: 25px;
+	background: none;
+    border: none;
+    font-family: cursive;
+    color: rgba(238, 240, 242, 1);
 }
 
 /*Adicionar tarefa*/
@@ -155,45 +192,22 @@ button[disabled]{
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05), 0 4px 6px 0 rgba(0, 0, 0, 0.1);
   padding: 8px 5px 8px 5px;
   margin: 20px;
-  grid-template-columns: 80% 20%;
-  grid-template-rows: 40% 40% 20%;
-  text-align: center;
+  text-align: left;
+  white-space: normal;
 }
 
 .lista .tarefa .corpo-tarefa{
-    display: grid;
-    height: inherit;
+	height: inherit;
 }
 
 .lista .tarefa .corpo-tarefa .nome{
-    grid-row-start: 1;
-    grid-row-end: 2;
-    grid-column-start: 1;
-    grid-column-end: 2;
 }
 
 .lista .tarefa .corpo-tarefa .prazo{
-    grid-row-start: 1;
-    grid-row-end: 2;
-    grid-column-start: 3;
-    grid-column-end: 4;
 }
 
 .lista .tarefa .corpo-tarefa .descricao{
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 1;
-    grid-column-end: 4;
     margin: 5px;
-}
-
-.lista .tarefa .prop-tarefa{
-    display: grid;
-    grid-row-start: 3;
-    grid-row-end: 4;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    background-color: #19a8c4;
 }
 
 label {

@@ -84,12 +84,12 @@ function montarTarefa(form){
     
     divCorpo.appendChild(divDescricao);
     
-    //Criar uma div pra propriedades da tarefa
-    var divProp = document.createElement("div");
-    divProp.classList.add("prop-tarefa");
-    
-    divTarefa.appendChild(divProp);
-    
+	var botao = document.createElement("button");
+	botao.classList.add("close-button");
+	botao.textContent = "X";
+	
+	divCorpo.appendChild(botao);
+	
     divTarefa.classList.add(getCor(tarefas[tarefas.length-1].cor));
     
     divTarefas.push(divTarefa);
