@@ -15,23 +15,31 @@
 
       <div class="menu">
         <button class="adicionar">ADICIONAR TAREFA</button>
-
-        <label class="labelTitulo">Ordenar por</label>
-        <select class="ordenar">
-          <option value="nome" selected>Nome</option>
-          <option value="prazo">Prazo</option>
-          <option value="data">Data</option>
-        </select>
+        
+        <div class="remover-div">
+            <label for="remover-tarefa" class="labelTitulo">Remover tarefa:</label>
+            <input id="remover-tarefa" class="inputRemover" type="number" name="remover" min="0">
+        </div>
+        <div class="ordenar-div">
+            <label class="labelTitulo">Ordenar por:</label>
+            <select class="ordenar">
+              <option value="nome" selected>Nome</option>
+              <option value="prazo">Prazo</option>
+              <option value="data">Data</option>
+            </select>
+        </div>
           
-          <label for="filtrar" class="labelTitulo">Filtrar</label>
-        <select id="filtrar" class="filtrar">
-          <option value="none" selected></option>
-          <option value="vermelho" class="background-vermelho"></option>
-          <option value="amarelo" class="background-amarelo"></option>
-          <option value="verde" class="background-verde"></option>
-          <option value="azul" class="background-azul"></option>
-          <option value="rosa" class="background-rosa"></option>
-        </select>
+        <div class="filtrar-div">
+        <label for="filtrar" class="labelTitulo">Filtrar</label>
+            <select id="filtrar" class="filtrar">
+              <option value="none" selected></option>
+              <option value="vermelho" class="background-vermelho"></option>
+              <option value="amarelo" class="background-amarelo"></option>
+              <option value="verde" class="background-verde"></option>
+              <option value="azul" class="background-azul"></option>
+              <option value="rosa" class="background-rosa"></option>
+            </select>
+        </div>
       </div>
       <div class="notification-bar ocultar">
         <p class="mensagem-erro"></p>
@@ -40,6 +48,7 @@
     </section>
 
     <!--Essa sessão não está sendo exibida por padrão-->
+    <main>
       <section class="addTarefa ocultar">
         <h2 class="titulo-addTarefa">Adicionar nova tarefa</h2>
         <form class="tarefa-form">
@@ -73,8 +82,7 @@
         <button class="salvar">Salvar</button>
         <button class="cancelar">Cancelar</button>
       </section>
-
-    <main>
+      
       <section class="lista">
       </section>
     </main>

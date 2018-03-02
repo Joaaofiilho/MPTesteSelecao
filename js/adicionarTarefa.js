@@ -42,12 +42,6 @@ function montarTarefa(form){
     
     divTarefa.appendChild(divCorpo);
     
-    var botao = document.createElement("button");
-	botao.classList.add("close-button");
-	botao.textContent = "X";
-	
-	divCorpo.appendChild(botao);
-    
     var divNome = document.createElement("div");
     divNome.classList.add("nome");
 
@@ -57,7 +51,7 @@ function montarTarefa(form){
 
     var p1 = document.createElement("p");
     p1.classList.add("nome-tarefa");
-    p1.innerHTML = tarefas[tarefas.length-1].nome;
+    p1.innerHTML = tarefas[tarefas.length-1].nome + " " + tarefas[tarefas.length-1].numero;
     divNome.appendChild(p1);
 
     divCorpo.appendChild(divNome);
@@ -95,11 +89,11 @@ function montarTarefa(form){
     divTarefas.push(divTarefa);
     
     containerLista.appendChild(divTarefa);
-    botoesRemover = [].slice.call(containerLista.getElementsByClassName("close-button"));
-    ouvirRemover(tarefas[tarefas.length-1].numero);
     
     tarefasCadast++;
+    console.log("Adicionou a tarefa!");
     ordenar(listOrdenar.value, true);
+    console.log("Ordenou!");
 }
 
 function exibirFormulario() {

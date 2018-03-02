@@ -2,7 +2,6 @@ var botoesRemover = [];
 
 function removerTarefa(numeroTarefa) {
     var divTarefasAux = containerLista.getElementsByClassName("tarefa");
-    console.log(numeroTarefa);
     divTarefasAux[getTarefa(numeroTarefa)].remove();
     tarefasCadast--;
     //Lembrar de voltar um numero em todas as tarefas da frente da removida
@@ -14,16 +13,6 @@ function getTarefa(numero){
     });
     console.log("Oops!");
     return null;    
-}
-
-function ouvirRemover(numeroTarefa){
-    botoesRemover.forEach(function (element){
-        console.log("Achei um botao!");
-        element.addEventListener("click", function(){
-            console.log("Teste" + numeroTarefa);
-            removerTarefa(numeroTarefa);
-        });
-    });
 }
 
 

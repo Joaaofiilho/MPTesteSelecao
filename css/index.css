@@ -13,88 +13,20 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.09), 0 5px 10px 0 rgba(0, 0, 0, 0.15);
 }
 
-/*O cabeçalho da pagina*/
-.titulo{
-  background-color: #000;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 23px;
-  font-weight: bold;
-  font-family: "Verdana", sans-serif;
-  color: rgba(252, 252, 252, 1);
-    letter-spacing: 3px;
-}
-
-.menu{
-  background-color: rgba(110, 126, 133, 1);
-  height: 60px;
-  padding-left: 20px;
-  padding-top: 15px;
-  position: relative;
-}
-
-.menu .labelTitulo{
-  font-size: 14px;
-}
-
-.menu .adicionar{
-  position: absolute;
-  left: 10%;
-  font-size: 15px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  margin-left: -20px;
-  width: auto;
-  height: 40px;
-  background-color: rgba(36, 123, 160, 1);
-  box-shadow: 0 5px rgb(18, 60, 79);
-}
-
-.menu .adicionar:hover{
-    background-color: rgb(24, 86, 112);
-}
-
-.menu .adicionar:active{
-    box-shadow: 0 2px rgb(18, 60, 79);
-}
-
-.notification-bar{
-    position: inherit;
-    width: inherit;
-    height: 45px;
-    background-color: rgba(247, 86, 124, 1);
-}
-
-.notification-bar .close-button{
-    position: relative;
-    left: 97%;
-    top: 50%;
-	margin-top: -7.5px;
-    border: none;
-    box-shadow: none;
-}
-
-.notification-bar .close-button:hover{
-    color: #c1c1c1;
-}
-
-.notification-bar .close-button:active{
-    box-shadow: none;
-	transform: none;
-}
-
 /*Recursos gerais da página*/
-input{
-	border-radius: 10px;    
+label {
+  text-transform: uppercase;
+  font: small-caps bold 12px sans-serif;
 }
 
-input:hover{
-    border-color: rgba(252, 252, 252, 1);
-    border-width: 3px;
+input{
+    position: relative;
+	border-radius: 10px;    
 }
 
 main{
     display: block;
+    background-color: rgb(213, 226, 232);
 }
 
 button{
@@ -137,16 +69,134 @@ button[disabled]{
     color: rgba(238, 240, 242, 1);
 }
 
+/*O cabeçalho da pagina*/
+.titulo{
+  background-color: #000;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 23px;
+  font-weight: bold;
+  font-family: "Verdana", sans-serif;
+  color: rgba(252, 252, 252, 1);
+    letter-spacing: 3px;
+}
+
+.menu{
+  background-color: rgb(213, 226, 232);
+  height: 60px;
+  padding-left: 20px;
+  padding-top: 15px;
+  position: relative;
+  border-bottom: 1.5px dotted #000;
+}
+
+.menu div{
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.menu select{
+    border-radius: 10px;
+}
+
+.menu .labelTitulo{
+  font-size: 14px;
+}
+
+.menu .adicionar{
+  position: absolute;
+  left: 4%;
+  top: 50%;
+  margin-left: -20px;
+  margin-top: -32.5px;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  width: auto;
+  height: 40px;
+  background-color: rgba(36, 123, 160, 1);
+  box-shadow: 0 5px rgb(18, 60, 79);
+  height: inherit;
+}
+
+.menu .adicionar:hover{
+    background-color: rgb(24, 86, 112);
+}
+
+.menu .adicionar:active{
+    box-shadow: 0 2px rgb(18, 60, 79);
+}
+
+.menu .remover-div{
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  margin-top: -15px;
+  height: auto;
+  background-color: rgba(247, 86, 124, 1);
+  box-shadow: 0 5px rgb(163, 57, 82);
+}
+
+.menu .inputRemover{
+    width: 50px;
+}
+
+.menu .ordenar-div{
+    position: absolute;
+    left: 53%;
+    top: 50%;
+    margin-top: -15px;
+    height: auto;
+    background-color: rgba(110, 126, 133, 1);
+    box-shadow: 0 5px rgb(59, 67, 71);
+}
+
+.menu .filtrar-div{
+    position: absolute;
+    left: 80%;
+    top: 50%;
+    margin-top: -15px;
+    height: auto;
+    box-shadow: 0 5px rgb(18, 60, 79);
+    background-color: rgba(110, 126, 133, 1);
+    box-shadow: 0 5px rgb(59, 67, 71);
+}
+
+.notification-bar{
+    position: inherit;
+    width: inherit;
+    height: 45px;
+    background-color: rgba(247, 86, 124, 1);
+}
+
+.notification-bar .close-button{
+    position: relative;
+    left: 97%;
+    top: 50%;
+	margin-top: -7.5px;
+    border: none;
+    box-shadow: none;
+}
+
+.notification-bar .close-button:hover{
+    color: #c1c1c1;
+}
+
+.notification-bar .close-button:active{
+    box-shadow: none;
+	transform: none;
+}
+
 /*Adicionar tarefa*/
 .addTarefa{
     width: 700px;
     height: 190px;
     position: relative;
     left: 50%;
-  padding: 20px 10px 20px 10px;
-  margin: 15px 5px 15px -350px;
-  background-color: rgba(36, 123, 160, 1);
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.17);
+    padding: 20px 10px 20px 10px;
+    margin: 0px 5px 0px -350px;
+    background-color: rgba(36, 123, 160, 1);
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.17);
 }
 
 .addTarefa .titulo-addTarefa{
@@ -155,6 +205,11 @@ button[disabled]{
   font: small-caps bold 16px sans-serif;
   font-weight: bold;
   margin-bottom: 5px;
+}
+
+.addTarefa input:hover{
+    border-color: rgba(252, 252, 252, 1);
+    border-width: 3px;
 }
 
 .addTarefa .tarefa-form .nome{
@@ -202,11 +257,13 @@ button[disabled]{
 
 /*A área de tarefas da página*/
 .lista{
+    position: relative;
     padding: 0px 10px 0px 10px;
+    height: auto;
 }
 
 .lista .tarefa{
-  position: relative;
+  position: absolute;
   display: inline-block;
   width: 450px;
   height: 200px;
@@ -218,29 +275,25 @@ button[disabled]{
 }
 
 .lista .tarefa .corpo-tarefa{
+    position: absolute;
 	height: inherit;
 }
 
 .lista .tarefa .corpo-tarefa .close-button{
-    position: relative;
+    position: absolute;
 }
 
 .lista .tarefa .corpo-tarefa .nome{
-    position: relative;
+    position: absolute;
 }
 
 .lista .tarefa .corpo-tarefa .prazo{
-    position: relative;
+    position: absolute;
 }
 
 .lista .tarefa .corpo-tarefa .descricao{
-    position: relative;
+    position: absolute;
     margin: 5px;
-}
-
-label {
-  text-transform: uppercase;
-  font: small-caps bold 12px sans-serif;
 }
 
 .lista .tarefa label{
@@ -254,7 +307,6 @@ label {
 /*Eventos especiais da página*/
 .clicado{
     background-color: black;
-    background-blend-mode: luminosity;
 }
 
 .ocultar{
@@ -270,17 +322,17 @@ label {
 }
 
 .background-amarelo{
-    background-color: rgb(237, 242, 84)
+    background-color: rgb(237, 242, 84);
 }
 
 .background-verde{
-    background-color: rgb(97, 232, 115)
+    background-color: rgb(97, 232, 115);
 }
 
 .background-azul{
-    background-color: rgb(30, 99, 237)
+    background-color: #2A5D7E;
 }
 
 .background-rosa{
-    background-color: rgb(239, 112, 171)
+    background-color: rgb(239, 112, 171);
 }
