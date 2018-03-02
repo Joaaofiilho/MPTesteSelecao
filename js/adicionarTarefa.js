@@ -42,6 +42,12 @@ function montarTarefa(form){
     
     divTarefa.appendChild(divCorpo);
     
+    var botao = document.createElement("button");
+	botao.classList.add("close-button");
+	botao.textContent = "X";
+	
+	divCorpo.appendChild(botao);
+    
     var divNome = document.createElement("div");
     divNome.classList.add("nome");
 
@@ -83,12 +89,6 @@ function montarTarefa(form){
     divDescricao.appendChild(p3);
     
     divCorpo.appendChild(divDescricao);
-    
-	var botao = document.createElement("button");
-	botao.classList.add("close-button");
-	botao.textContent = "X";
-	
-	divCorpo.appendChild(botao);
 	
     divTarefa.classList.add(getCor(tarefas[tarefas.length-1].cor));
     
@@ -134,44 +134,37 @@ function isFormValido(form){
     if(form.nome.value.length == 0){
         valido = false;
         inputNome.classList.add("erro");
+        exibirErro("Verifique o campo de texto \"Nome\" e tente novamente");
     }
     else inputNome.classList.remove("erro");
-    
-    
-    if(form.prazo.value.length == 0 && form.prazo){
+    var dataInput = new Date(form.prazo.value);
+    console.log(dataInput.getTime());
+    console.log(dataHoje.getTime());
+    if(form.prazo.value.length == 0 || dataInput.getTime() < dataHoje.getTime()){
         valido = false;
         inputPrazo.classList.add("erro");
+        exibirErro("Verifique o campo \"Data\" e tente novamente");
     }
+    
     else inputPrazo.classList.remove("erro");
 
     if(form.descricao.value.length == 0){
         valido = false;
         inputDescricao.classList.add("erro");
+        exibirErro("Verifique o campo de texto \"Descrição\" e tente novamente");
     }
     else inputDescricao.classList.remove("erro");
     
     
     if(valido) return true;
-    else{
-        exibirErro("Por favor, verifique os campos destacados e tente novamente.");
-        return false;
-    }
+    return false;
+    
 }
 
 function limparErrosForm(){
     inputNome.classList.remove("erro");
     inputPrazo.classList.remove("erro");
     inputDescricao.classList.remove("erro");
-}
-
-function getPrazo(dataInvertida){
-    var data = dataInvertida.split("-");
-    return data[2] + "/" + data[1] + "/" + data[0];
-}
-
-function getPrazoInvertido(dataNormal){
-    var data = dataNormal.split("/");
-    return data[2] + "-" + data[1] + "-" + data[0];
 }
 
 function getCor(nome){

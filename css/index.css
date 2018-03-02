@@ -34,6 +34,11 @@ body{
   width: auto;
   height: 40px;
   background-color: rgba(36, 123, 160, 1);
+  box-shadow: 0 5px rgb(18, 60, 79);
+}
+
+.menu .adicionar:active{
+    box-shadow: 0 2px rgb(18, 60, 79);
 }
 
 .menu .remover{
@@ -186,6 +191,7 @@ button[disabled]{
 }
 
 .lista .tarefa{
+  position: relative;
   display: inline-block;
   width: 450px;
   height: 200px;
@@ -200,13 +206,20 @@ button[disabled]{
 	height: inherit;
 }
 
+.lista .tarefa .corpo-tarefa .close-button{
+    position: relative;
+}
+
 .lista .tarefa .corpo-tarefa .nome{
+    position: relative;
 }
 
 .lista .tarefa .corpo-tarefa .prazo{
+    position: relative;
 }
 
 .lista .tarefa .corpo-tarefa .descricao{
+    position: relative;
     margin: 5px;
 }
 

@@ -135,3 +135,13 @@ function getAno(dataInvertida){
     var data = dataInvertida.split("-");
     return data[0];
 }
+
+function getPrazo(dataInvertida){
+    var data = dataInvertida.split("-");
+    return data[2] + "/" + data[1] + "/" + data[0];
+}
+
+function getPrazoInvertido(dataNormal){
+    var data = dataNormal.split("/");
+    return data[2] + "-" + data[1] + "-" + data[0];
+}
