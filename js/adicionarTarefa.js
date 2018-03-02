@@ -41,6 +41,8 @@ function montarTarefa(form){
     var divCorpo = document.createElement("div");
     divCorpo.classList.add("corpo-tarefa");
     
+    divTarefa.appendChild(divCorpo);
+    
     var divNome = document.createElement("div");
     divNome.classList.add("nome");
 
@@ -83,7 +85,6 @@ function montarTarefa(form){
     
     divCorpo.appendChild(divDescricao);
     
-	divTarefa.appendChild(divCorpo);
     console.log(divTarefa);
     divTarefa.classList.add(getCor(tarefas[tarefas.length-1].cor));
     
@@ -92,9 +93,7 @@ function montarTarefa(form){
     containerLista.appendChild(divTarefa);
     
     tarefasCadast++;
-    console.log("Adicionou a tarefa!");
     ordenar(listOrdenar.value, true);
-    console.log("Ordenou!");
 }
 
 function exibirFormulario() {
