@@ -1,14 +1,18 @@
 const listOrdenar = menu.querySelector(".ordenar");
 
-var dataHoje = new Date();
-var diaHoje = dataHoje.getDate();
-var mesHoje = dataHoje.getMonth()+1;
-var anoHoje = dataHoje.getFullYear();
+var dataHojeAux = new Date();
+var diaHoje = dataHojeAux.getDate();
+var mesHoje = dataHojeAux.getMonth()+1;
+var anoHoje = dataHojeAux.getFullYear();
+var anoMaximo = 2150;
+var dataMaxima = new Date(anoMaximo, 12, 31, 0, 0, 0, 0);
 if(diaHoje<10) diaHoje = '0'+diaHoje;
 if(mesHoje<10) mesHoje = '0'+mesHoje;
+var dataHoje = new Date(anoHoje, mesHoje, diaHoje, 0, 0, 0, 0);
 
 var dataHojeInvertida = anoHoje + "-" + mesHoje + "-" + diaHoje;
 inputPrazo.setAttribute("min", dataHojeInvertida);
+inputPrazo.setAttribute("max", (anoMaximo + "-12-31"));
 
 var oldValueOrdenar = "";
 var ordemNum = [];

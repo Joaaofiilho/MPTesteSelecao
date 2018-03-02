@@ -1,5 +1,6 @@
 /*O corpo inteiro da pagina*/
 body{
+    display: block;
     width: 1020px;
     height: auto;
     position: absolute;
@@ -28,26 +29,33 @@ body{
   background-color: rgba(110, 126, 133, 1);
   height: 60px;
   padding-left: 20px;
+  padding-top: 15px;
+  position: relative;
+}
+
+.menu .labelTitulo{
+  font-size: 14px;
 }
 
 .menu .adicionar{
+  position: absolute;
+  left: 10%;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-left: -20px;
   width: auto;
   height: 40px;
   background-color: rgba(36, 123, 160, 1);
   box-shadow: 0 5px rgb(18, 60, 79);
 }
 
+.menu .adicionar:hover{
+    background-color: rgb(24, 86, 112);
+}
+
 .menu .adicionar:active{
     box-shadow: 0 2px rgb(18, 60, 79);
-}
-
-.menu .remover{
-  width: 50px;
-  height: 50px;
-}
-
-.menu .labelTitulo{
-  font-size: 14px;
 }
 
 .notification-bar{
@@ -75,23 +83,29 @@ body{
 	transform: none;
 }
 
-
 /*Recursos gerais da página*/
 input{
-	border-radius: 10px;
+	border-radius: 10px;    
+}
+
+input:hover{
+    border-color: rgba(252, 252, 252, 1);
+    border-width: 3px;
 }
 
 main{
-    display: inherit;
+    display: block;
 }
 
 button{
   display: inline-block;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
   color: #fff;
+  transition: 0.3s;
   border: none;
   border-radius: 10px;
   box-shadow: 0 5px #999;
@@ -179,10 +193,11 @@ button[disabled]{
 .addTarefa .tarefa-form .cor{
     display: inline-block;
     width: auto;
+    user-select: none;
 }
 
-.addTarefa .tarefa-form .cor .cor-titulo{
-
+.addTarefa .tarefa-form .cor .inputCor{
+    border-radius: 10px;
 }
 
 /*A área de tarefas da página*/

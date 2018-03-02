@@ -95,6 +95,9 @@ function montarTarefa(form){
     divTarefas.push(divTarefa);
     
     containerLista.appendChild(divTarefa);
+    botoesRemover = [].slice.call(containerLista.getElementsByClassName("close-button"));
+    ouvirRemover(tarefas[tarefas.length-1].numero);
+    
     tarefasCadast++;
     ordenar(listOrdenar.value, true);
 }
@@ -137,15 +140,18 @@ function isFormValido(form){
         exibirErro("Verifique o campo de texto \"Nome\" e tente novamente");
     }
     else inputNome.classList.remove("erro");
-    var dataInput = new Date(form.prazo.value);
-    console.log(dataInput.getTime());
-    console.log(dataHoje.getTime());
-    if(form.prazo.value.length == 0 || dataInput.getTime() < dataHoje.getTime()){
+    
+    var datasPrazo = form.prazo.value.split("-");
+    var dataInput = new Date(datasPrazo[0], datasPrazo[1], datasPrazo[2], 0, 0, 0, 0);
+
+    if(form.prazo.value.length == 0 || dataInput.getTime() < dataHoje.getTime() || dataInput.getTime() > dataMaxima.getTime()){
+        console.log(dataInput.getFullYear());
+        console.log(anoMaximo);
         valido = false;
         inputPrazo.classList.add("erro");
-        exibirErro("Verifique o campo \"Data\" e tente novamente");
+        exibirErro("Verifique o campo \"Data\" e tente novamente. Datas permitidas: (" + diaHoje + "/"
+                  + mesHoje + "/" + anoHoje + ") até (31/12/"+anoMaximo+")");
     }
-    
     else inputPrazo.classList.remove("erro");
 
     if(form.descricao.value.length == 0){
