@@ -39,11 +39,6 @@ function montarTarefa(form){
     var divTarefa = document.createElement("div");
     divTarefa.classList.add("tarefa");
     
-    var divCorpo = document.createElement("div");
-    divCorpo.classList.add("corpo-tarefa");
-    
-    divTarefa.appendChild(divCorpo);
-    
     var divNome = document.createElement("div");
     divNome.classList.add("nome");
     
@@ -57,7 +52,7 @@ function montarTarefa(form){
     p1.innerHTML = tarefas[tarefas.length-1].nome;
     divNome.appendChild(p1);
 
-    divCorpo.appendChild(divNome);
+    divTarefa.appendChild(divNome);
 
     var divPrazo = document.createElement("div");
     divPrazo.classList.add("prazo");
@@ -71,7 +66,7 @@ function montarTarefa(form){
     p2.innerHTML = getPrazo(tarefas[tarefas.length - 1].prazo);
     divPrazo.appendChild(p2);
 
-    divCorpo.appendChild(divPrazo);
+    divTarefa.appendChild(divPrazo);
 
     var divDescricao = document.createElement("div");
     divDescricao.classList.add("descricao");
@@ -85,7 +80,7 @@ function montarTarefa(form){
     p3.innerHTML = tarefas[tarefas.length - 1].descricao;
     divDescricao.appendChild(p3);
     
-    divCorpo.appendChild(divDescricao);
+    divTarefa.appendChild(divDescricao);
     
     var spanNumero = document.createElement("span");
     spanNumero.classList.add("numero-tarefa","ocultar");

@@ -1,6 +1,6 @@
 /*O corpo inteiro da pagina*/
 body{
-   width: 1020px;
+    width: 1020px;
     height: auto;
     position: absolute;
     left: 50%;
@@ -8,58 +8,62 @@ body{
     margin-left: -510px;
     margin-top: -288px;
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: rgb(213, 226, 232);
+    background-image:url("../images/background.jpg"); 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.09), 0 5px 10px 0 rgba(0, 0, 0, 0.15);
 }
 
 
 /*O cabeçalho da pagina*/
 .titulo{
-  background-color: #000;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 23px;
-  font-weight: bold;
-  font-family: "Verdana", sans-serif;
-  color: rgba(252, 252, 252, 1);
+    background-color: #000;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 23px;
+    font-weight: bold;
+    font-family: "dataLatim", sans-serif;
+    color: rgba(252, 252, 252, 1);
     letter-spacing: 3px;
 }
 
 .menu{
-  background-color: rgb(213, 226, 232);
-  height: 60px;
-  padding-left: 20px;
-  padding-top: 15px;
-  position: relative;
+    background-color: rgb(213, 226, 232);
+    height: 60px;
+    padding-left: 20px;
+    padding-top: 15px;
+    position: relative;
+    border-bottom: 1px dotted #000;
 }
 
 .menu div{
-  padding: 5px;
-  border-radius: 10px;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .menu select{
     border-radius: 10px;
 }
 
-.menu .labelTitulo{
-  font-size: 14px;
+.menu label{
+    font-family: "dataLatim";
+    font-size: 15px;
+    letter-spacing: 1.2px;
 }
 
 .menu .adicionar{
-  position: absolute;
-  left: 4%;
-  top: 50%;
-  margin-left: -20px;
-  margin-top: -32.5px;
-  font-size: 15px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  width: auto;
-  height: 40px;
-  background-color: rgba(36, 123, 160, 1);
-  box-shadow: 0 5px rgb(18, 60, 79);
-  height: inherit;
+    position: absolute;
+    left: 4%;
+    top: 50%;
+    margin-left: -20px;
+    margin-top: -32.5px;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    width: auto;
+    height: 40px;
+    background-color: rgba(36, 123, 160, 1);
+    box-shadow: 0 5px rgb(18, 60, 79);
+    height: inherit;
 }
 
 .menu .adicionar:hover{
@@ -71,19 +75,20 @@ body{
 }
 
 .menu .remover-div{
-  position: absolute;
-  left: 25%;
-  top: 50%;
-  margin-top: -15px;
-  height: auto;
-  background-color: rgba(247, 86, 124, 1);
-  box-shadow: 0 5px rgb(163, 57, 82);
+    position: absolute;
+    left: 25%;
+    top: 50%;
+    margin-top: -15px;
+    height: 20px;
+    background-color: rgba(247, 86, 124, 1);
+    box-shadow: 0 5px rgb(163, 57, 82);
 }
 
 .menu .remover-div .remover-button{
     position: relative;
     width: 30px;
-    height: 23px;
+    height: 18px;
+    bottom: 10%;
     font-weight: bold;
     text-align: center;
     background-color: rgb(165, 23, 51);
@@ -104,23 +109,27 @@ body{
 
 .menu .ordenar-div{
     position: absolute;
-    left: 53%;
+    left: 55.8%;
     top: 50%;
     margin-top: -15px;
-    height: auto;
+    height: 20px;
     background-color: rgba(110, 126, 133, 1);
     box-shadow: 0 5px rgb(59, 67, 71);
 }
 
 .menu .filtrar-div{
     position: absolute;
-    left: 80%;
+    left: 85.8%;
     top: 50%;
     margin-top: -15px;
-    height: auto;
+    height: 20px;
     box-shadow: 0 5px rgb(18, 60, 79);
     background-color: rgba(110, 126, 133, 1);
     box-shadow: 0 5px rgb(59, 67, 71);
+}
+
+.menu .filtrar{
+    width: 40px;
 }
 
 .notification-bar{
@@ -150,8 +159,8 @@ body{
 
 /*Recursos gerais da página*/
 label {
-  text-transform: uppercase;
-  font: small-caps bold 12px sans-serif;
+    text-transform: uppercase;
+    font: small-caps bold 12px sans-serif;
 }
 
 input{
@@ -166,7 +175,7 @@ main{
 
 button{
   display: inline-block;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-family: "dataLatim", sans-serif;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -179,8 +188,8 @@ button{
 }
 
 button:active{
-  box-shadow: 0 2px #666;
-  transform: translateY(4px);
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 button:hover{
@@ -189,10 +198,10 @@ button:hover{
 
 button:disabled,
 button[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-  cursor: not-allowed;
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
 }
 
 .close-button{
@@ -204,7 +213,10 @@ button[disabled]{
     color: rgba(238, 240, 242, 1);
 }
 
-
+@font-face{
+    font-family: dataLatim;
+    src: url("../fonts/data-latin.ttf");
+}
 /*Adicionar tarefa*/
 .addTarefa{
     width: 700px;
@@ -212,17 +224,17 @@ button[disabled]{
     position: relative;
     left: 50%;
     padding: 20px 10px 20px 10px;
-    margin: 0px 5px 0px -350px;
+    margin: 5px 0px 5px -350px;
     background-color: rgba(36, 123, 160, 1);
     box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.17);
 }
 
 .addTarefa .titulo-addTarefa{
-  text-align: center;
-  text-transform: uppercase;
-  font: small-caps bold 16px sans-serif;
-  font-weight: bold;
-  margin-bottom: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    font: small-caps bold 16px sans-serif;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .addTarefa input:hover{
@@ -321,43 +333,71 @@ button[disabled]{
 }
 
 .lista .tarefa{
-  position: inherit;
-  display:inline-flex;
-  width: 450px;
-  height: 200px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05), 0 4px 6px 0 rgba(0, 0, 0, 0.1);
-  padding: 8px 5px 8px 5px;
-  margin: 20px;
-  text-align: left;
-  white-space: normal;
+    position: relative;
+    display:inline-flex;
+    width: 450px;
+    height: 200px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05), 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+    padding: 8px 5px 8px 5px;
+    margin: 20px;
+    text-align: left;
+    white-space: normal;
+    word-break: break-all;
+    border-radius: 10px;
 }
 
-.lista .tarefa .corpo-tarefa{
-	height: inherit;
+.lista .tarefa div{
+    position: absolute;
+    margin: 1%;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #fffce2;
+    box-shadow: 0 5px #c1bfa8;
+    border: 1px dotted #000;
+    padding-top: 3px;
 }
 
-.lista .tarefa .corpo-tarefa .close-button{
-
+.lista .tarefa .nome{
+    width: 70%;
+    height: 19%;
+    display: inline-block;
 }
 
-.lista .tarefa .corpo-tarefa .nome{
-
+.lista .tarefa .prazo{
+    width: 20%;
+    height: 19%;
+    left: 76%;
+    display: inline-block;
 }
 
-.lista .tarefa .corpo-tarefa .prazo{
-
-}
-
-.lista .tarefa .corpo-tarefa .descricao{
+.lista .tarefa .descricao{
+    display: inline-block;
+    width: 95%;
+    height: 62%;
+    top: 30%;
     margin: 5px;
 }
 
-.lista .tarefa label{
-  font-size: 13px;
+.lista .tarefa .descricao p{
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -210px;
+    margin-top: -20px;
 }
 
-.lista .tarefa .prop-tarefa{
-    background-color: #c9c9c9;
+.lista .tarefa label{
+    font-size: 13px;
+    letter-spacing: 0.6px;
+}
+
+.lista .tarefa p{
+    font-size: 0.8rem;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
 }
 
 /*Eventos especiais da página*/
@@ -377,18 +417,38 @@ button[disabled]{
     background-color: rgb(219, 63, 52);
 }
 
+.tarefa.background-vermelho{
+    box-shadow: 0 6px rgb(150, 43, 36);
+}
+
 .background-amarelo{
     background-color: rgb(237, 242, 84);
+}
+
+.tarefa.background-amarelo{
+    box-shadow: 0 6px rgb(189, 193, 67);
 }
 
 .background-verde{
     background-color: rgb(97, 232, 115);
 }
 
+.tarefa.background-verde{
+    box-shadow: 0 6px rgb(73, 175, 87);
+}
+
 .background-azul{
-    background-color: #2A5D7E;
+    background-color: rgb(54, 118, 160);
+}
+
+.tarefa.background-azul{
+    box-shadow: 0 6px rgb(37, 80, 109);
 }
 
 .background-rosa{
     background-color: rgb(239, 112, 171);
+}
+
+.tarefa.background-rosa{
+    box-shadow: 0 6px rgb(158, 74, 113);
 }
