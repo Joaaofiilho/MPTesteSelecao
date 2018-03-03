@@ -1,9 +1,8 @@
 /*O corpo inteiro da pagina*/
 body{
-    position: absolute;
-    display: block;
-    width: 1020px;
+   width: 1020px;
     height: auto;
+    position: absolute;
     left: 50%;
     top:50%;
     margin-left: -510px;
@@ -13,61 +12,6 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.09), 0 5px 10px 0 rgba(0, 0, 0, 0.15);
 }
 
-/*Recursos gerais da página*/
-label {
-  text-transform: uppercase;
-  font: small-caps bold 12px sans-serif;
-}
-
-input{
-    position: relative;
-	border-radius: 10px;    
-}
-
-main{
-    display: block;
-    background-color: rgb(213, 226, 232);
-}
-
-button{
-  display: inline-block;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  transition: 0.3s;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 5px #999;
-}
-
-button:active{
-  box-shadow: 0 2px #666;
-  transform: translateY(4px);
-}
-
-button:hover{
-    
-}
-
-button:disabled,
-button[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-  cursor: not-allowed;
-}
-
-.close-button{
-	width: 25px;
-    height: 25px;
-	background: none;
-    border: none;
-    font-family: cursive;
-    color: rgba(238, 240, 242, 1);
-}
 
 /*O cabeçalho da pagina*/
 .titulo{
@@ -136,6 +80,24 @@ button[disabled]{
   box-shadow: 0 5px rgb(163, 57, 82);
 }
 
+.menu .remover-div .remover-button{
+    position: relative;
+    width: 30px;
+    height: 23px;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgb(165, 23, 51);
+    box-shadow: 0 5px rgb(96, 12, 29);
+}
+
+.menu .remover-div .remover-button:hover{
+    background-color: rgb(119, 15, 36);
+}
+
+.menu .remover-div .remover-button:active{
+    box-shadow: 0 2px rgb(96, 12, 29);
+}
+
 .menu .inputRemover{
     width: 50px;
 }
@@ -185,6 +147,63 @@ button[disabled]{
     box-shadow: none;
 	transform: none;
 }
+
+/*Recursos gerais da página*/
+label {
+  text-transform: uppercase;
+  font: small-caps bold 12px sans-serif;
+}
+
+input{
+    position: relative;
+	border-radius: 10px;    
+}
+
+main{
+    display: inherit;
+    background-color: rgb(213, 226, 232);
+}
+
+button{
+  display: inline-block;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  transition: 0.3s;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px #999;
+}
+
+button:active{
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+
+button:hover{
+    
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.close-button{
+	width: 25px;
+    height: 25px;
+	background: none;
+    border: none;
+    font-family: cursive;
+    color: rgba(238, 240, 242, 1);
+}
+
 
 /*Adicionar tarefa*/
 .addTarefa{
@@ -252,19 +271,58 @@ button[disabled]{
 
 .addTarefa .tarefa-form .cor .inputCor{
     border-radius: 10px;
+    user-select: none;
+}
+
+.addTarefa button{
+    width: 70px;
+    height: 33px;
+    font-weight: bold;
+}
+
+.addTarefa .salvar{
+    position: absolute;
+    left: 50%;
+    top: 82%;
+    margin-left: -35px;
+    background-color: rgb(97, 232, 115);
+    box-shadow: 0 5px rgb(51, 124, 61);
+    color: #000;
+}
+
+.addTarefa .salvar:hover{
+    background-color: rgb(57, 140, 68);
+}
+
+.addTarefa .salvar:active{
+    box-shadow: 0 2px rgb(51, 124, 61);
+}
+
+.addTarefa .cancelar{
+    position: absolute;
+    left: 100%;
+    top: 82%;
+    margin-left: -80px;
+    background-color: rgba(110, 126, 133, 1);
+    box-shadow: 0 5px rgb(59, 67, 71);
+}
+
+.addTarefa .cancelar:hover{
+    background-color: rgb(89, 103, 109);
+}
+
+.addTarefa .cancelar:active{
+    box-shadow: 0 2px rgb(59, 67, 71);
 }
 
 /*A área de tarefas da página*/
 .lista{
-    display: inline-block;
-    position: relative;
     padding: 0px 10px 0px 10px;
-    height: auto;
 }
 
 .lista .tarefa{
-  position: absolute;
-  display: inline-block;
+  position: inherit;
+  display:inline-flex;
   width: 450px;
   height: 200px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05), 0 4px 6px 0 rgba(0, 0, 0, 0.1);
@@ -275,24 +333,22 @@ button[disabled]{
 }
 
 .lista .tarefa .corpo-tarefa{
-    position: absolute;
 	height: inherit;
 }
 
 .lista .tarefa .corpo-tarefa .close-button{
-    position: absolute;
+
 }
 
 .lista .tarefa .corpo-tarefa .nome{
-    position: absolute;
+
 }
 
 .lista .tarefa .corpo-tarefa .prazo{
-    position: absolute;
+
 }
 
 .lista .tarefa .corpo-tarefa .descricao{
-    position: absolute;
     margin: 5px;
 }
 

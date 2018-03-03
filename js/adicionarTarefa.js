@@ -14,10 +14,10 @@ var inputCor = cor.querySelector(".inputCor");
 var botaoSalvar = adicionarTarefa.querySelector(".salvar");
 var botaoCancelar = adicionarTarefa.querySelector(".cancelar");
 
-var main = document.querySelector("main");
-var containerLista = main.querySelector(".lista");
+var containerLista = document.querySelector(".lista");
 
 var tarefasCadast = 0;
+var numTarefasTotal = 0;
 var tarefas = [];
 var divTarefas = [];
 
@@ -26,12 +26,13 @@ function criarTarefa(form) {
   var tarefa = {
     nome: form.nome.value.trim(),
     prazo: form.prazo.value,
-    numero: tarefasCadast,
+    numero: numTarefasTotal,
+    id: tarefasCadast+1,
     descricao: form.descricao.value.trim(),
     cor: form.cor.value
   };
   tarefas.push(tarefa);
-  montarTarefa();
+  montarTarefa(form);
 }
 
 function montarTarefa(form){
@@ -45,14 +46,15 @@ function montarTarefa(form){
     
     var divNome = document.createElement("div");
     divNome.classList.add("nome");
-
+    
     var label1 = document.createElement("label");
-    label1.textContent = "Tarefa";
+    label1.textContent = "Tarefa (ID: " + (tarefas[tarefas.length-1].id) + ")";
+    label1.classList.add("label-titulo");
     divNome.appendChild(label1);
 
     var p1 = document.createElement("p");
     p1.classList.add("nome-tarefa");
-    p1.innerHTML = tarefas[tarefas.length-1].nome + " " + tarefas[tarefas.length-1].numero;
+    p1.innerHTML = tarefas[tarefas.length-1].nome;
     divNome.appendChild(p1);
 
     divCorpo.appendChild(divNome);
@@ -85,15 +87,19 @@ function montarTarefa(form){
     
     divCorpo.appendChild(divDescricao);
     
-    console.log(divTarefa);
+    var spanNumero = document.createElement("span");
+    spanNumero.classList.add("numero-tarefa","ocultar");
+    spanNumero.textContent = tarefas[tarefas.length-1].numero;
+    
+    divTarefa.appendChild(spanNumero);
+    
     divTarefa.classList.add(getCor(tarefas[tarefas.length-1].cor));
     
     divTarefas.push(divTarefa);
-    
     containerLista.appendChild(divTarefa);
-    
     tarefasCadast++;
-    ordenar(listOrdenar.value, true);
+    numTarefasTotal++;
+    reordenarIds();
 }
 
 function exibirFormulario() {
@@ -139,8 +145,6 @@ function isFormValido(form){
     var dataInput = new Date(datasPrazo[0], datasPrazo[1], datasPrazo[2], 0, 0, 0, 0);
 
     if(form.prazo.value.length == 0 || dataInput.getTime() < dataHoje.getTime() || dataInput.getTime() > dataMaxima.getTime()){
-        console.log(dataInput.getFullYear());
-        console.log(anoMaximo);
         valido = false;
         inputPrazo.classList.add("erro");
         exibirErro("Verifique o campo \"Data\" e tente novamente. Datas permitidas: (" + diaHoje + "/"

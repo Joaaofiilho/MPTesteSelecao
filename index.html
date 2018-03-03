@@ -17,15 +17,16 @@
         <button class="adicionar">ADICIONAR TAREFA</button>
         
         <div class="remover-div">
-            <label for="remover-tarefa" class="labelTitulo">Remover tarefa:</label>
+            <label for="remover-tarefa" class="labelTitulo">Remover tarefa | ID:</label>
             <input id="remover-tarefa" class="inputRemover" type="number" name="remover" min="0">
+            <button class="remover-button">OK</button>
         </div>
         <div class="ordenar-div">
             <label class="labelTitulo">Ordenar por:</label>
             <select class="ordenar">
-              <option value="nome" selected>Nome</option>
-              <option value="prazo">Prazo</option>
-              <option value="data">Data</option>
+              <option value="nome" selected>Nome da tarefa</option>
+              <option value="prazo">Prazo p/ conclusão</option>
+              <option value="data">Data de criação</option>
             </select>
         </div>
           
@@ -82,8 +83,8 @@
         <button class="cancelar">Cancelar</button>
       </section>
     <main>
-      <section class="lista">
-          
+      <section id="lista" class="lista">
+
       </section>
     </main>
     <script src="js/adicionarTarefa.js"></script>

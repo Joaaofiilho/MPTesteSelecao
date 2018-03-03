@@ -15,14 +15,13 @@ inputPrazo.setAttribute("min", dataHojeInvertida);
 inputPrazo.setAttribute("max", (anoMaximo + "-12-31"));
 
 var oldValueOrdenar = "";
-var ordemNum = [];
 
 listOrdenar.addEventListener('click', function(event){
     var tipoOrdem = listOrdenar.value;
-    ordenar(tipoOrdem, false);
+    ordenar(tipoOrdem, false, false);
 });
 
-function ordenar(valor, adicionandoTarefa){
+function ordenar(valor, adicionandoTarefa, vindoPeloReordenar){
     if(!(valor == oldValueOrdenar) || adicionandoTarefa){
         for(var i = 0; i < tarefasCadast; i++){
             var tarefa = containerLista.querySelector(".tarefa");
@@ -43,22 +42,24 @@ function ordenar(valor, adicionandoTarefa){
                 break;
         }
     }
+    if(!vindoPeloReordenar)
+        reordenarIds();
 }
 
 function ordenarPorNome(){
     var nomes = [];
     var divTarefasAux = divTarefas.slice();
-    for (var i = 0; i < tarefas.length; i++) nomes.push(tarefas[i].nome);
+    console.log("tarefas.length: " + tarefas.length);
+    for (var i = 0; i < tarefas.length; i++) nomes.push(tarefas[i].nome.toLowerCase());
     nomes = nomes.sort();
     
     for (var i = 0; i < tarefas.length; i++){
         for (var j = 0; j < tarefas.length; j++){
             if(typeof divTarefasAux[j] != 'undefined'){
-                var nomeDiv = divTarefasAux[j].querySelector(".nome-tarefa").textContent;
+                var nomeDiv = divTarefasAux[j].querySelector(".nome-tarefa").textContent.toLowerCase();
                 if(nomes[i] == nomeDiv){
                     containerLista.appendChild(divTarefasAux[j]);
                     delete divTarefasAux[j];
-
                     tarefasCadast++;
                     break;
                 }
@@ -71,12 +72,17 @@ function ordenarPorPrazo(){
     var datas = [];
     var divTarefasAux = divTarefas.slice();
     for (var i = 0; i < tarefas.length; i++){
-        var data = new Date(tarefas[i].prazo);
-        datas.push(data);
+        var data = tarefas[i].prazo.split("-");
+        var dataF = new Date(data[0], data[1], data[2], 0, 0, 0, 0);
+        datas.push(dataF);
     }
     
+    datas.sort(function(a, b){
+        return a.getDate()-b.getDate();
+    });
+    /*
     for(var i = 0; i < datas.length-1; i++){
-        for (var j = 0; j <= datas.length; j++){
+        for (var j = i; j <= datas.length; j++){
             if(datas[i].getTime() > datas[i+1].getTime()){
                 var aux = datas[i];
                 datas[i] = datas[i+1];
@@ -84,11 +90,13 @@ function ordenarPorPrazo(){
             }
         }
     }
+    */
     
     for (var i = 0; i < tarefas.length; i++){
         for (var j = 0; j < tarefas.length; j++){
             if(typeof divTarefasAux[j] != 'undefined'){
-                var dataDiv = new Date(getPrazoInvertido(divTarefas[j].querySelector(".prazo-tarefa").textContent));
+                data = getPrazoInvertido(divTarefas[j].querySelector(".prazo-tarefa").textContent).split("-");
+                var dataDiv = new Date(data[0], data[1], data[2], 0, 0, 0, 0);
                 if(datas[i].getTime() == dataDiv.getTime()){
                     containerLista.appendChild(divTarefas[j]);
                     delete divTarefasAux[j];
@@ -123,7 +131,32 @@ function ordenarPorData(){
         }
     }
 }
-
+function reordenarIds(){
+    
+    //var divTarefasAux = divTarefas.slice();
+    
+    for(var i = 0; i < divTarefas.length; i++){
+        for(var j = i; j < tarefas.length; j++){
+            if(divTarefas[i].querySelector(".numero-tarefa").textContent 
+               == tarefas[j].numero){
+                var titulo = divTarefas[i].querySelector(".label-titulo");
+                tarefas[j].id = i+1;
+                titulo.textContent = "Tarefa (ID: " + (tarefas[j].id) + ")";
+            }
+        }
+    }
+    
+    ordenar(listOrdenar.value, true, true);
+    //console.log(tarefas.length);
+    //console.log(divTarefasAux.length);
+    //for (var i = 0; i < tarefas.length; i++){
+    //   var titulo = divTarefasAux[i].querySelector(".label-titulo");
+    //    tarefas[i].id = i+1;
+    //    titulo.textContent = "Tarefa (ID: " + (tarefas[i].id) + ")";
+    //    containerLista.appendChild(divTarefasAux[i]);
+    //    tarefasCadast++;
+    //}
+}
 
 function getDia(dataInvertida){
     var data = dataInvertida.split("-");

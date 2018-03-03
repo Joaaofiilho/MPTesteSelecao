@@ -1,19 +1,42 @@
-/*
-function removerTarefa(numeroTarefa) {
-    var divTarefasAux = containerLista.getElementsByClassName("tarefa");
-    divTarefasAux[getTarefa(numeroTarefa)].remove();
-    tarefasCadast--;
+var inputRemover = menu.querySelector(".inputRemover");
+
+var botaoConfirmarRem = menu.querySelector(".remover-button");
+
+botaoConfirmarRem.addEventListener("click", function(event){
+   if(inputRemover.value != ""){
+       removerTarefa(inputRemover.value);
+   }else exibirErro("Por favor, selecione uma ID!");
+    inputRemover.value = "";
+});
+
+function removerTarefa(idTarefa) {
+    if(tarefasCadast > 0 && idTarefa <= tarefasCadast && idTarefa > 0){
+        //console.log(containerLista.childNodes.item(numeroTarefa));
+         containerLista.childNodes.item(idTarefa).remove();
+         var aux1 = divTarefas.slice(0, idTarefa-1);
+         var aux2 = divTarefas.slice(idTarefa);
+         divTarefas = aux1.concat(aux2);
+         
+         aux1 = tarefas.slice(0, idTarefa-1);
+         aux2 = tarefas.slice(idTarefa);
+         tarefas = aux1.concat(aux2);
+            
+         tarefasCadast--;
+         reordenarIds();
+    }else exibirErro("Não há uma tarefa com o número correspondente para ser apagada!");
     //Lembrar de voltar um numero em todas as tarefas da frente da removida
+    console.log(tarefas);
+    console.log(divTarefas);
 }
 
-function getTarefa(numero){
+
+function getIndexTarefa(id){
     tarefas.forEach(function(element, index){
-       if(element.numero == numero) return index; 
+       if(element.id == id) return index; 
     });
-    console.log("Oops!");
-    return null;    
+    return null;
 }
-*/
+
 
 
  //for(var i=0; i< botoesRemover.length; i++) {
