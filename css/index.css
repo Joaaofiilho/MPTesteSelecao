@@ -133,17 +133,31 @@ body{
 }
 
 .notification-bar{
-    position: inherit;
+    position: relative;
     width: inherit;
     height: 45px;
     background-color: rgba(247, 86, 124, 1);
 }
 
+.notification-bar .mensagem-erro{
+    font-family: "printClearly";
+    font-weight: bold;
+    font-size: 18px;
+    width: 80%;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    margin-top: -10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 .notification-bar .close-button{
-    position: relative;
+    position: absolute;
     left: 97%;
     top: 50%;
-	margin-top: -7.5px;
+	margin-top: -12.5px;
     border: none;
     box-shadow: none;
 }
@@ -217,16 +231,35 @@ button[disabled]{
     font-family: dataLatim;
     src: url("../fonts/data-latin.ttf");
 }
+
+@font-face{
+    font-family: printClearly;
+    src: url("../fonts/print_clearly_tt.ttf");
+}
+
+@font-face{
+    font-family: printClearly;
+    src: url("../fonts/print_bold_tt.ttf");
+    font-weight: bold;
+}
 /*Adicionar tarefa*/
+.secao-addTarefa{
+    position: relative;
+    width: inherit;
+    height: 250px;
+    background-color: rgb(213, 226, 232);
+}
+
 .addTarefa{
+    position: absolute;
     width: 700px;
     height: 190px;
-    position: relative;
     left: 50%;
     padding: 20px 10px 20px 10px;
     margin: 5px 0px 5px -350px;
     background-color: rgba(36, 123, 160, 1);
-    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.17);
+    border-radius: 10px;
+    box-shadow: 0 5px rgb(21, 76, 99);
 }
 
 .addTarefa .titulo-addTarefa{

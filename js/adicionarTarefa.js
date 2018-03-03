@@ -1,7 +1,8 @@
 var menu = document.querySelector(".menu");
 var botaoAdicionar = menu.querySelector(".adicionar");
 
-var adicionarTarefa = document.querySelector(".addTarefa");
+var sessaoAdicionar = document.querySelector(".secao-addTarefa");
+var adicionarTarefa = sessaoAdicionar.querySelector(".addTarefa");
 var formulario = adicionarTarefa.querySelector(".tarefa-form");
 var nome = formulario.querySelector(".nome");
 var inputNome = nome.querySelector(".inputNome");
@@ -98,9 +99,9 @@ function montarTarefa(form){
 }
 
 function exibirFormulario() {
-    if(adicionarTarefa.classList.contains("ocultar")){
-        adicionarTarefa.classList.remove("ocultar");
-    }else adicionarTarefa.classList.add("ocultar");
+    if(sessaoAdicionar.classList.contains("ocultar")){
+        sessaoAdicionar.classList.remove("ocultar");
+    }else sessaoAdicionar.classList.add("ocultar");
 }
 
 botaoAdicionar.addEventListener('click', function(event){
@@ -111,13 +112,13 @@ botaoAdicionar.addEventListener('click', function(event){
 botaoSalvar.addEventListener('click', function(event){
   if(isFormValido(formulario)){
       criarTarefa(formulario);
-      adicionarTarefa.classList.add("ocultar");
+      sessaoAdicionar.classList.add("ocultar");
       formulario.reset();
   }
 });
 
 botaoCancelar.addEventListener('click', function(event){
-    adicionarTarefa.classList.add("ocultar");
+    sessaoAdicionar.classList.add("ocultar");
     formulario.reset();
     limparErrosForm();
 });
@@ -132,7 +133,7 @@ function isFormValido(form){
     if(form.nome.value.length == 0){
         valido = false;
         inputNome.classList.add("erro");
-        exibirErro("Verifique o campo de texto \"Nome\" e tente novamente");
+        exibirErro("Verifique o campo de texto \"Nome\" e tente novamente!");
     }
     else inputNome.classList.remove("erro");
     
@@ -143,14 +144,14 @@ function isFormValido(form){
         valido = false;
         inputPrazo.classList.add("erro");
         exibirErro("Verifique o campo \"Data\" e tente novamente. Datas permitidas: (" + diaHoje + "/"
-                  + mesHoje + "/" + anoHoje + ") até (31/12/"+anoMaximo+")");
+                  + mesHoje + "/" + anoHoje + ") até (31/12/"+anoMaximo+")!");
     }
     else inputPrazo.classList.remove("erro");
 
     if(form.descricao.value.length == 0){
         valido = false;
         inputDescricao.classList.add("erro");
-        exibirErro("Verifique o campo de texto \"Descrição\" e tente novamente");
+        exibirErro("Verifique o campo de texto \"Descrição\" e tente novamente!");
     }
     else inputDescricao.classList.remove("erro");
     
