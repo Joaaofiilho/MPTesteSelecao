@@ -303,7 +303,7 @@ button[disabled]{
 }
 
 .addTarefa .tarefa-form .descricao .inputDescricao{
-    width: 550px;
+    width: 530px;
     height: 100px;
     position: relative;
 }

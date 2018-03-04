@@ -164,7 +164,9 @@ function isFormValido(form){
     var dataInput = new Date(datasPrazo[0], datasPrazo[1], datasPrazo[2], 0, 0, 0, 0);
 
     if(form.prazo.value.length == 0 || dataInput.getTime() < dataHoje.getTime() 
-       || dataInput.getTime() > dataMaxima.getTime()){
+       || dataInput.getTime() > dataMaxima.getTime() || ((form.prazo.value.indexOf("-") > -1)
+      && (form.prazo.value.indexOf("/") > -1)) || (!(form.prazo.value.indexOf("-") > -1)
+      && !(form.prazo.value.indexOf("/") > -1))){
         valido = false;
         destacarElemento(inputPrazo);
         exibirErro("Verifique o campo \"Data\" e tente novamente. Datas permitidas: (" + diaHoje + "/"
