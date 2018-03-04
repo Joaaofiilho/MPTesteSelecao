@@ -2,6 +2,8 @@ var listFiltrar = menu.querySelector(".filtrar");
 
 var oldValueFitlrar = "";
 
+inicializar();
+
 listFiltrar.addEventListener("click", function(event){
     colorir(listFiltrar);
     filtrar(listFiltrar.value);
@@ -34,4 +36,12 @@ function colorir(list){
     list.classList.remove("background-rosa");
 
     list.classList.add(getCor(list.value));
+}
+
+function inicializar(){
+    for(var i = 0; i < tarefas.length; i++){
+        var divTarefa = montarDivTarefa(tarefas[i]);
+        containerLista.appendChild(divTarefa);
+    }
+    ordenar(listOrdenar.value, true);
 }

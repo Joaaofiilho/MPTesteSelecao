@@ -19,6 +19,8 @@ function removerTarefa(idTarefa) {
          tarefas = aux1.concat(aux2);
         
          tarefasCadast--;
+         decrescerDado("stgTarefasCadast");
+         armazenarDado("stgTarefas", JSON.stringify(tarefas));
          reordenarIds();
     }else exibirErro("Não há uma tarefa com o número correspondente para ser apagada!");
     //Lembrar de voltar um numero em todas as tarefas da frente da removida

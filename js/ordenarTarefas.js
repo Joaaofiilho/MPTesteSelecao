@@ -1,4 +1,18 @@
-const listOrdenar = menu.querySelector(".ordenar");
+var listOrdenar = menu.querySelector(".ordenar");
+
+var dataHojeAux = new Date();
+var diaHoje = dataHojeAux.getDate();
+var mesHoje = dataHojeAux.getMonth()+1;
+var anoHoje = dataHojeAux.getFullYear();
+var anoMaximo = 2150;
+var dataMaxima = new Date(anoMaximo, 12, 31, 0, 0, 0, 0);
+if(diaHoje<10) diaHoje = '0'+diaHoje;
+if(mesHoje<10) mesHoje = '0'+mesHoje;
+var dataHoje = new Date(anoHoje, mesHoje, diaHoje, 0, 0, 0, 0);
+
+var dataHojeInvertida = anoHoje + "-" + mesHoje + "-" + diaHoje;
+inputPrazo.setAttribute("min", dataHojeInvertida);
+inputPrazo.setAttribute("max", (anoMaximo + "-12-31"));
 
 var oldValueOrdenar = "";
 
@@ -123,9 +137,11 @@ function reordenarIds(){
 }
 
 function apagarTarefas(){
-    for(var i = 0; i < tarefasCadast; i++){
+    var tarefasAux = containerLista.querySelectorAll(".tarefa");
+    for(var i = 0; i < tarefasAux.length; i++){
         var tarefa = containerLista.querySelector(".tarefa");
         tarefa.remove();
     }
     tarefasCadast = 0;
+    armazenarDado("stgTarefasCadast", 0);
 }

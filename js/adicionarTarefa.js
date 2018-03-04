@@ -3,7 +3,6 @@ var botaoAdicionar = menu.querySelector(".adicionar");
 
 var sessaoAdicionar = document.querySelector(".secao-addTarefa");
 var adicionarTarefa = sessaoAdicionar.querySelector(".addTarefa");
-
 var formulario = adicionarTarefa.querySelector(".tarefa-form");
 
 var nome = formulario.querySelector(".nome");
@@ -23,10 +22,15 @@ var botaoCancelar = adicionarTarefa.querySelector(".cancelar");
 
 var containerLista = document.querySelector(".lista");
 
-var tarefasCadast = 0;
-var numTarefasTotal = 0;
 var tarefas = [];
-//var divTarefas = [];
+
+if(!localStorage.stgTarefasCadast) armazenarDado("stgTarefasCadast", 0);
+if(!localStorage.stgNumTarefasTotal) armazenarDado("stgNumTarefasTotal", 0);
+if(!localStorage.stgTarefas) armazenarDado("stgTarefas", JSON.stringify(tarefas));
+
+var tarefasCadast = parseInt(pegarDado("stgTarefasCadast"));
+var numTarefasTotal = parseInt(pegarDado("stgNumTarefasTotal"));
+tarefas = JSON.parse(pegarDado("stgTarefas"));
 
 function criarTarefa(form) {
     //As condiçoes do formulario completo ja devem ter sido avaliadas
@@ -39,7 +43,11 @@ function criarTarefa(form) {
     cor: form.cor.value
     };
     tarefas.push(tarefa);
+    armazenarDado("stgTarefas", JSON.stringify(tarefas));
+    
     numTarefasTotal++;
+    acrescentarDado("stgNumTarefasTotal");
+    
     return tarefa;
 }
 
@@ -98,6 +106,7 @@ function montarDivTarefa(tarefa){
 function exibirTarefa(divTarefa){
     containerLista.appendChild(divTarefa);
     tarefasCadast++;
+    acrescentarDado("stgTarefasCadast");
 }
 
 function exibirFormulario() {
@@ -170,24 +179,4 @@ function limparErrosForm(){
     retirarDestaqueElemento(inputNome);
     retirarDestaqueElemento(inputPrazo);
     retirarDestaqueElemento(inputDescricao);
-}
-
-function getCor(nome){
-    switch(nome.toLowerCase()){
-        case "vermelho":
-            return "background-vermelho";
-            break;
-        case "amarelo":
-            return "background-amarelo";
-            break;
-        case "verde":
-            return "background-verde";
-            break;
-        case "azul":
-            return "background-azul";
-            break;
-        case "rosa":
-            return "background-rosa";
-            break;
-    }
 }

@@ -1,3 +1,20 @@
+//Armazenamento local
+function armazenarDado(nome, dado){
+    localStorage.setItem(nome, dado);
+}
+
+function pegarDado(nome){
+    return localStorage.getItem(nome);
+}
+
+function acrescentarDado(nome){
+    armazenarDado(nome, (parseInt(pegarDado(nome))+1));
+}
+
+function decrescerDado(nome){
+    armazenarDado(nome, (parseInt(pegarDado(nome))-1));
+}
+
 //Elementos
 function ocultarElemento(elemento){
     elemento.classList.add("ocultar");
@@ -15,22 +32,27 @@ function retirarDestaqueElemento(elemento){
     elemento.classList.remove("erro");
 }
 
+function getCor(nome){
+    switch(nome.toLowerCase()){
+        case "vermelho":
+            return "background-vermelho";
+            break;
+        case "amarelo":
+            return "background-amarelo";
+            break;
+        case "verde":
+            return "background-verde";
+            break;
+        case "azul":
+            return "background-azul";
+            break;
+        case "rosa":
+            return "background-rosa";
+            break;
+    }
+}
+
 //Data e hora
-var dataHojeAux = new Date();
-var diaHoje = dataHojeAux.getDate();
-var mesHoje = dataHojeAux.getMonth()+1;
-var anoHoje = dataHojeAux.getFullYear();
-var anoMaximo = 2150;
-var dataMaxima = new Date(anoMaximo, 12, 31, 0, 0, 0, 0);
-if(diaHoje<10) diaHoje = '0'+diaHoje;
-if(mesHoje<10) mesHoje = '0'+mesHoje;
-var dataHoje = new Date(anoHoje, mesHoje, diaHoje, 0, 0, 0, 0);
-
-var dataHojeInvertida = anoHoje + "-" + mesHoje + "-" + diaHoje;
-
-inputPrazo.setAttribute("min", dataHojeInvertida);
-inputPrazo.setAttribute("max", (anoMaximo + "-12-31"));
-
 function getDia(dataInvertida){
     var data = dataInvertida.split("-");
     return data[2];
