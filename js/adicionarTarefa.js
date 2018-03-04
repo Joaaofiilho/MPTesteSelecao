@@ -3,15 +3,21 @@ var botaoAdicionar = menu.querySelector(".adicionar");
 
 var sessaoAdicionar = document.querySelector(".secao-addTarefa");
 var adicionarTarefa = sessaoAdicionar.querySelector(".addTarefa");
+
 var formulario = adicionarTarefa.querySelector(".tarefa-form");
+
 var nome = formulario.querySelector(".nome");
 var inputNome = nome.querySelector(".inputNome");
+
 var prazo = formulario.querySelector(".prazo");
 var inputPrazo = prazo.querySelector(".inputPrazo");
+
 var descricao = formulario.querySelector(".descricao");
 var inputDescricao = descricao.querySelector(".inputDescricao");
+
 var cor = formulario.querySelector(".cor");
 var inputCor = cor.querySelector(".inputCor");
+
 var botaoSalvar = adicionarTarefa.querySelector(".salvar");
 var botaoCancelar = adicionarTarefa.querySelector(".cancelar");
 
@@ -20,88 +26,84 @@ var containerLista = document.querySelector(".lista");
 var tarefasCadast = 0;
 var numTarefasTotal = 0;
 var tarefas = [];
-var divTarefas = [];
+//var divTarefas = [];
 
 function criarTarefa(form) {
-  //As condiçoes do formulario completo ja devem ter sido avaliadas
-  var tarefa = {
+    //As condiçoes do formulario completo ja devem ter sido avaliadas
+    var tarefa = {
     nome: form.nome.value.trim(),
     prazo: form.prazo.value,
     numero: numTarefasTotal,
     id: tarefasCadast+1,
     descricao: form.descricao.value.trim(),
     cor: form.cor.value
-  };
-  tarefas.push(tarefa);
-  montarTarefa(form);
+    };
+    tarefas.push(tarefa);
+    numTarefasTotal++;
+    return tarefa;
 }
 
-function montarTarefa(form){
-    var divTarefa = document.createElement("div");
-    divTarefa.classList.add("tarefa");
-    
-    var divNome = document.createElement("div");
-    divNome.classList.add("nome");
-    
-    var label1 = document.createElement("label");
-    label1.textContent = "Tarefa (ID: " + (tarefas[tarefas.length-1].id) + ")";
-    label1.classList.add("label-titulo");
-    divNome.appendChild(label1);
+function montarDiv(classe){
+    var div = document.createElement("div");
+    div.classList.add(classe);
+    return div;
+}
 
-    var p1 = document.createElement("p");
-    p1.classList.add("nome-tarefa");
-    p1.innerHTML = tarefas[tarefas.length-1].nome;
-    divNome.appendChild(p1);
+function montarLabel(texto, classe){
+    var label = document.createElement("label");
+    label.textContent = texto;
+    label.classList.add(classe);
+    return label;
+}
 
+function montarParag(texto, classe){
+    var p = document.createElement("p");
+    p.innerHTML = texto;
+    p.classList.add(classe);
+    return p;
+}
+
+function montarSpan(texto, classe, tarefa){
+    var span = document.createElement("span");
+    span.textContent = tarefa.numero;
+    span.classList.add(classe);
+    ocultarElemento(span);
+    return span;
+}
+
+function montarDivTarefa(tarefa){
+    var divTarefa = montarDiv("tarefa");
+    
+    var divNome = montarDiv("nome");
+    divNome.appendChild(montarLabel("Tarefa (ID: " + (tarefa.id) + ")", "label-titulo"));
+    divNome.appendChild(montarParag(tarefa.nome, "nome-tarefa"));
     divTarefa.appendChild(divNome);
 
-    var divPrazo = document.createElement("div");
-    divPrazo.classList.add("prazo");
-
-    var label2 = document.createElement("label");
-    label2.textContent = "Prazo";
-    divPrazo.appendChild(label2);
-
-    var p2 = document.createElement("p");
-    p2.classList.add("prazo-tarefa");
-    p2.innerHTML = getPrazo(tarefas[tarefas.length - 1].prazo);
-    divPrazo.appendChild(p2);
-
+    var divPrazo = montarDiv("prazo");
+    divPrazo.appendChild(montarLabel("Prazo", "label-prazo"));
+    divPrazo.appendChild(montarParag(getPrazo(tarefa.prazo), "prazo-tarefa"));
     divTarefa.appendChild(divPrazo);
 
-    var divDescricao = document.createElement("div");
-    divDescricao.classList.add("descricao");
-
-    var label3 = document.createElement("label");
-    label3.textContent = "Descrição";
-    divDescricao.appendChild(label3);
-
-    var p3 = document.createElement("p");
-    p3.classList.add("descricao-tarefa");
-    p3.innerHTML = tarefas[tarefas.length - 1].descricao;
-    divDescricao.appendChild(p3);
-    
+    var divDescricao = montarDiv("descricao");
+    divDescricao.appendChild(montarLabel("Descrição", "label-descricao"));
+    divDescricao.appendChild(montarParag(tarefa.descricao, "descricao-tarefa"));
     divTarefa.appendChild(divDescricao);
+
+    divTarefa.appendChild(montarSpan(tarefa.numero, "numero-tarefa", tarefa));
+    divTarefa.classList.add(getCor(tarefa.cor));
     
-    var spanNumero = document.createElement("span");
-    spanNumero.classList.add("numero-tarefa","ocultar");
-    spanNumero.textContent = tarefas[tarefas.length-1].numero;
-    
-    divTarefa.appendChild(spanNumero);
-    
-    divTarefa.classList.add(getCor(tarefas[tarefas.length-1].cor));
-    
-    divTarefas.push(divTarefa);
+    return divTarefa;
+}
+
+function exibirTarefa(divTarefa){
     containerLista.appendChild(divTarefa);
     tarefasCadast++;
-    numTarefasTotal++;
-    reordenarIds();
 }
 
 function exibirFormulario() {
     if(sessaoAdicionar.classList.contains("ocultar")){
-        sessaoAdicionar.classList.remove("ocultar");
-    }else sessaoAdicionar.classList.add("ocultar");
+        exibirElemento(sessaoAdicionar);
+    }else ocultarElemento(sessaoAdicionar);
 }
 
 botaoAdicionar.addEventListener('click', function(event){
@@ -111,8 +113,10 @@ botaoAdicionar.addEventListener('click', function(event){
 
 botaoSalvar.addEventListener('click', function(event){
   if(isFormValido(formulario)){
-      criarTarefa(formulario);
-      sessaoAdicionar.classList.add("ocultar");
+      var tarefa = criarTarefa(formulario);
+      exibirTarefa(montarDivTarefa(tarefa));
+      ocultarElemento(sessaoAdicionar);
+      ordenar(listOrdenar.value, true);
       formulario.reset();
   }
 });
@@ -132,28 +136,29 @@ function isFormValido(form){
     var valido = true;
     if(form.nome.value.length == 0){
         valido = false;
-        inputNome.classList.add("erro");
+        destacarElemento(inputNome);
         exibirErro("Verifique o campo de texto \"Nome\" e tente novamente!");
     }
-    else inputNome.classList.remove("erro");
+    else retirarDestaqueElemento(inputNome);
     
     var datasPrazo = form.prazo.value.split("-");
     var dataInput = new Date(datasPrazo[0], datasPrazo[1], datasPrazo[2], 0, 0, 0, 0);
 
-    if(form.prazo.value.length == 0 || dataInput.getTime() < dataHoje.getTime() || dataInput.getTime() > dataMaxima.getTime()){
+    if(form.prazo.value.length == 0 || dataInput.getTime() < dataHoje.getTime() 
+       || dataInput.getTime() > dataMaxima.getTime()){
         valido = false;
-        inputPrazo.classList.add("erro");
+        destacarElemento(inputPrazo);
         exibirErro("Verifique o campo \"Data\" e tente novamente. Datas permitidas: (" + diaHoje + "/"
                   + mesHoje + "/" + anoHoje + ") até (31/12/"+anoMaximo+")!");
     }
-    else inputPrazo.classList.remove("erro");
+    else retirarDestaqueElemento(inputPrazo);
 
     if(form.descricao.value.length == 0){
         valido = false;
-        inputDescricao.classList.add("erro");
+        destacarElemento(inputDescricao);
         exibirErro("Verifique o campo de texto \"Descrição\" e tente novamente!");
     }
-    else inputDescricao.classList.remove("erro");
+    else retirarDestaqueElemento(inputDescricao);
     
     
     if(valido) return true;
@@ -162,9 +167,9 @@ function isFormValido(form){
 }
 
 function limparErrosForm(){
-    inputNome.classList.remove("erro");
-    inputPrazo.classList.remove("erro");
-    inputDescricao.classList.remove("erro");
+    retirarDestaqueElemento(inputNome);
+    retirarDestaqueElemento(inputPrazo);
+    retirarDestaqueElemento(inputDescricao);
 }
 
 function getCor(nome){
