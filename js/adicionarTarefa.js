@@ -23,14 +23,22 @@ var botaoCancelar = adicionarTarefa.querySelector(".cancelar");
 var containerLista = document.querySelector(".lista");
 
 var tarefas = [];
+var tarefasCadast;
+var numTarefasTotal;
 
-if(!localStorage.stgTarefasCadast) armazenarDado("stgTarefasCadast", 0);
-if(!localStorage.stgNumTarefasTotal) armazenarDado("stgNumTarefasTotal", 0);
-if(!localStorage.stgTarefas) armazenarDado("stgTarefas", JSON.stringify(tarefas));
-
-var tarefasCadast = parseInt(pegarDado("stgTarefasCadast"));
-var numTarefasTotal = parseInt(pegarDado("stgNumTarefasTotal"));
-tarefas = JSON.parse(pegarDado("stgTarefas"));
+if (!(String(typeof(localStorage)).indexOf("undefined") > -1)) {
+    if(!window.localStorage.stgTarefasCadast) armazenarDado("stgTarefasCadast", 0);
+    if(!localStorage.stgNumTarefasTotal) armazenarDado("stgNumTarefasTotal", 0);
+    if(!localStorage.stgTarefas) armazenarDado("stgTarefas", JSON.stringify(tarefas));
+    
+    tarefasCadast = parseInt(pegarDado("stgTarefasCadast"));
+    numTarefasTotal = parseInt(pegarDado("stgNumTarefasTotal"));
+    tarefas = JSON.parse(pegarDado("stgTarefas"));
+}else{
+    tarefasCadast = 0;
+    numTarefasTotal = 0;
+    exibirErro("[Aviso] Seu navegador não suporta o armazenamento local!");
+}
 
 function criarTarefa(form) {
     //As condiçoes do formulario completo ja devem ter sido avaliadas
@@ -43,9 +51,11 @@ function criarTarefa(form) {
     cor: form.cor.value
     };
     tarefas.push(tarefa);
+    
     armazenarDado("stgTarefas", JSON.stringify(tarefas));
     
     numTarefasTotal++;
+    
     acrescentarDado("stgNumTarefasTotal");
     
     return tarefa;
@@ -120,7 +130,7 @@ botaoAdicionar.addEventListener('click', function(event){
     exibirFormulario();
 });
 
-botaoSalvar.addEventListener('click', function(event){
+botaoSalvar.addEventListener("click", function(event){
   if(isFormValido(formulario)){
       var tarefa = criarTarefa(formulario);
       exibirTarefa(montarDivTarefa(tarefa));

@@ -1,6 +1,8 @@
 //Armazenamento local
 function armazenarDado(nome, dado){
-    localStorage.setItem(nome, dado);
+    if (!(String(typeof(localStorage)).indexOf("undefined") > -1)) {
+        localStorage.setItem(nome, dado);
+    }
 }
 
 function pegarDado(nome){
@@ -8,11 +10,16 @@ function pegarDado(nome){
 }
 
 function acrescentarDado(nome){
-    armazenarDado(nome, (parseInt(pegarDado(nome))+1));
+    if (!(String(typeof(localStorage)).indexOf("undefined") > -1)) {
+        armazenarDado(nome, (parseInt(pegarDado(nome))+1));
+    }
 }
 
 function decrescerDado(nome){
-    armazenarDado(nome, (parseInt(pegarDado(nome))-1));
+    //if (typeof(localStorage) !== "undefined") {
+    if (!(String(typeof(localStorage)).indexOf("undefined") > -1)) {
+        armazenarDado(nome, (parseInt(pegarDado(nome))-1));
+    }
 }
 
 //Elementos
@@ -69,11 +76,21 @@ function getAno(dataInvertida){
 }
 
 function getPrazo(dataInvertida){
-    var data = dataInvertida.split("-");
+    var data = [];
+    if(dataInvertida.indexOf("-") > -1){
+        data = dataInvertida.split("-");
+    }else{
+        data = dataInvertida.split("/");
+    }
     return data[2] + "/" + data[1] + "/" + data[0];
 }
 
 function getPrazoInvertido(dataNormal){
-    var data = dataNormal.split("/");
-    return data[2] + "-" + data[1] + "-" + data[0];
+    var data = [];
+    if(dataNormal.indexOf("-") > -1){
+        data = dataNormal.split("-");
+    }else{
+        data = dataNormal.split("/");
+    }
+    return data[0] + "-" + data[1] + "-" + data[2];
 }

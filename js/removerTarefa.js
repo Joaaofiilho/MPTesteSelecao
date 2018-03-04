@@ -12,25 +12,29 @@ botaoConfirmarRem.addEventListener("click", function(event){
 function removerTarefa(idTarefa) {
     if(tarefasCadast > 0 && idTarefa <= tarefasCadast && idTarefa > 0){
         //console.log(containerLista.childNodes.item(numeroTarefa));
-         containerLista.childNodes.item(idTarefa).remove();
-         
-         var aux1 = tarefas.slice(0, idTarefa-1);
-         var aux2 = tarefas.slice(idTarefa);
+         console.log(getIndexTarefa(idTarefa));
+         var aux1 = tarefas.slice(0, getIndexTarefa(idTarefa));
+         console.log(aux1);
+         var aux2 = tarefas.slice(getIndexTarefa(idTarefa)+1);
+         console.log(aux2);
          tarefas = aux1.concat(aux2);
         
+         containerLista.childNodes.item(idTarefa).remove();
          tarefasCadast--;
+         
          decrescerDado("stgTarefasCadast");
-         armazenarDado("stgTarefas", JSON.stringify(tarefas));
+         
          reordenarIds();
+         armazenarDado("stgTarefas", JSON.stringify(tarefas));
     }else exibirErro("Não há uma tarefa com o número correspondente para ser apagada!");
     //Lembrar de voltar um numero em todas as tarefas da frente da removida
 }
 
 
 function getIndexTarefa(id){
-    tarefas.forEach(function(element, index){
-       if(element.id == id) return index; 
-    });
+    for(var i = 0; i < tarefas.length; i++){
+        if(tarefas[i].id == id) return i;
+    }
     return null;
 }
 

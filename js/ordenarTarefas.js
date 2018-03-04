@@ -24,7 +24,6 @@ listOrdenar.addEventListener('click', function(event){
 function ordenar(valor, adicionandoTarefa){
     if(!(valor == oldValueOrdenar) || adicionandoTarefa){
         apagarTarefas();
-        console.log("apagadas");
         oldValueOrdenar = valor;
         
         switch(valor.toLowerCase()){
@@ -72,7 +71,12 @@ function ordenarPorPrazo(){
     var tarefasAux = tarefas.slice();
     
     for (var i = 0; i < tarefas.length; i++){
-        var data = tarefas[i].prazo.split("-");
+        var data = [];
+        if(tarefas[i].prazo.indexOf("-") > -1){
+            data = tarefas[i].prazo.split("-");
+        }else{
+            data = tarefas[i].prazo.split("/");
+        }
         var dataF = new Date(data[0], data[1], data[2], 0, 0, 0, 0);
         datas.push(dataF);
     }
@@ -85,7 +89,7 @@ function ordenarPorPrazo(){
         for (var j = 0; j < tarefas.length; j++){
             if(typeof tarefasAux[j] != 'undefined'){
                 var data = (getPrazoInvertido(tarefasAux[j].prazo)).split("-");
-                var dataDiv = new Date(data[2], data[3], data[4], 0, 0, 0, 0);
+                var dataDiv = new Date(data[0], data[1], data[2], 0, 0, 0, 0);
                 if(datas[i].getTime() == dataDiv.getTime()){
                     var divTarefa = montarDivTarefa(tarefasAux[j]);
                     exibirTarefa(divTarefa);
@@ -121,13 +125,13 @@ function ordenarPorData(){
 
 function reordenarIds(){
     var divTarefasAux = containerLista.querySelectorAll(".tarefa");
-    console.log(divTarefasAux);
+
     apagarTarefas();
     
     for(var i = 0; i < divTarefasAux.length; i++){
         divTarefasAux[i].querySelector(".label-titulo").textContent = "Tarefa (ID: " + (i+1) + ")";
+        var numeroTarefa = divTarefasAux[i].querySelector(".numero-tarefa").textContent;
         for(var j = 0; j < tarefas.length; j++){
-            var numeroTarefa = divTarefasAux[i].querySelector(".numero-tarefa").textContent;
             if(numeroTarefa == tarefas[j].numero){
                 tarefas[j].id = i+1;
             }
@@ -143,5 +147,6 @@ function apagarTarefas(){
         tarefa.remove();
     }
     tarefasCadast = 0;
+
     armazenarDado("stgTarefasCadast", 0);
 }

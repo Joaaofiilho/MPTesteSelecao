@@ -2,7 +2,9 @@ var listFiltrar = menu.querySelector(".filtrar");
 
 var oldValueFitlrar = "";
 
-inicializar();
+if (!(String(typeof(localStorage)).indexOf("undefined") > -1)) {
+    inicializar();
+}
 
 listFiltrar.addEventListener("click", function(event){
     colorir(listFiltrar);
